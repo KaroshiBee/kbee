@@ -1,0 +1,36 @@
+# AnadigmDesigner2 / Wine cruft
+*.bak
+*.bk?
+*.~*
+~$*
+Thumbs.db
+.DS_Store
+
+# AD2 auto-generated / transient
+*.log
+*.tmp
+*.swp
+
+# Build / host-side output (placeholder for later)
+build/
+dist/
+out/
+asic/ngspice/out/
+*.o
+*.obj
+*.exe
+
+# direnv's cached per-env state (keep .envrc itself tracked)
+.direnv/
+
+# Python bytecode (scripts/ is module-importable now)
+__pycache__/
+*.pyc
+.hypothesis/
+
+# Editor
+.vscode/
+.idea/
+*.code-workspace
+.cursor/
+/.cursor
