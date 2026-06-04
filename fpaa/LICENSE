@@ -1,0 +1,10 @@
+SPDX-License-Identifier: CERN-OHL-W-2.0
+
+Copyright (c) 2026 Karoshibee LTD
+
+FPAA design sources (`.ad2` under `designs/`) are licensed under CERN-OHL-W
+version 2 or (at your option) any later version of CERN-OHL-W published by
+CERN. Full license text: ../LICENSE-HARDWARE
+
+Simulation CSVs and helper scripts in this tree are LGPL-3.0-or-later unless
+noted otherwise (see ../LICENSE and ../THIRD_PARTY.md).

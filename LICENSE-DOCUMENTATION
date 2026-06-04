@@ -1,0 +1,17 @@
+SPDX-License-Identifier: CC-BY-SA-4.0
+
+Copyright (c) 2026 Karoshibee LTD
+
+Documentation in this repository — including Markdown under `docs/` and
+`fpaa/docs/`, AD2 HTML exports under `fpaa/designs/reports/`, and figures
+bundled with those reports — is licensed under the Creative Commons
+Attribution-ShareAlike 4.0 International license (CC BY-SA 4.0) or (at your
+option) any later version of the Creative Commons Attribution-ShareAlike
+license published by Creative Commons.
+
+You are free to share and adapt the documentation provided you give
+appropriate credit and distribute derivatives under the same license (or a
+compatible later version, if you elect one).
+
+Full legal text (version 4.0): https://creativecommons.org/licenses/by-sa/4.0/legalcode
+Human-readable summary: https://creativecommons.org/licenses/by-sa/4.0/

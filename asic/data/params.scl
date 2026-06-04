@@ -1,0 +1,16 @@
+# SPDX-License-Identifier: LGPL-3.0-or-later
+# Copyright (c) 2026 Karoshibee LTD
+# KBee ASIC pass-1 simulation parameters (scaleable)
+# Nominal grant step: 50 nA; k_scale scales all currents in Ngspice.
+
+set k_scale 1.0
+set I_step_nA 50.0
+set I_step [expr {$I_step_nA * $k_scale * 1e-9}]
+set P_code 64
+set N_W 256
+
+# sky130 leaf sketch (replace with extracted models when PDK hooked up)
+set mos_w_n 0.42
+set mos_l_n 0.15
+set mos_w_p 0.42
+set mos_l_p 0.15

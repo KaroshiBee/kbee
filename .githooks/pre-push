@@ -1,0 +1,29 @@
+#!/usr/bin/env bash
+# SPDX-License-Identifier: LGPL-3.0-or-later
+# Copyright (c) 2026 Karoshibee LTD
+# Run kbee checks before push. Install: nix develop -c install-git-hooks
+set -euo pipefail
+
+ROOT="$(git rev-parse --show-toplevel)"
+cd "$ROOT"
+
+# Git hooks get a minimal environment (Emacs/Magit often omit login PATH).
+export PATH="$HOME/.nix-profile/bin:/nix/var/nix/profiles/default/bin:$PATH"
+
+if [ "$(git config --get core.hooksPath || true)" != .githooks ]; then
+  echo "pre-push: warning: core.hooksPath is not .githooks — run: nix develop -c install-git-hooks" >&2
+fi
+
+if ! command -v nix >/dev/null 2>&1; then
+  echo "pre-push: BLOCKED — nix not in PATH" >&2
+  echo "pre-push: install Nix, or bypass once with: git push --no-verify" >&2
+  exit 1
+fi
+
+echo "pre-push: running format + license/copyright checks ..."
+if ! nix develop -c check-kbee; then
+  echo "pre-push: BLOCKED — fix with: nix develop -c format-kbee" >&2
+  exit 1
+fi
+
+echo "pre-push: checks passed"

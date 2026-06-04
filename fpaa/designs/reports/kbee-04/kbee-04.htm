@@ -1,0 +1,2934 @@
+<html>
+<head>
+<title>kbee-04</title>
+<style type="text/css">
+  BODY { font-size: 12pt }
+  H1 { font-size: 14pt }
+  HR { height: 1 }
+  TH { font-size: 12pt }
+  TD { font-size: 10pt }
+  TD.side_label{ font-weight: bold; text-align: right }
+  TD.side_value { font-style: italic; padding-left: 10; text-align: left  }
+  P.pagebreak { page-break-after: always }
+  I.small { font-size: 8pt }
+</style>
+</head>
+<body><div align=center>
+<h1>Chip: RESIDUE</h1><img border="0" src="RESIDUE.png" /><br />
+<h1>Clocks: RESIDUE</h1>
+<hr>
+<table border="0" width="100%">
+	<tr>
+     <td class="side_label">Master Clock - ACLK (fc)</td>
+     <td class="side_value">16 MHz</td>
+     <td class="side_label"></td>
+     <td class="side_value"></td>
+	</tr>
+	<tr>
+     <td class="side_label">System Clock 1 (sys1 = fc / 1)</td>
+     <td class="side_value">16 MHz</td>
+     <td class="side_label">System Clock 2 (sys2 = fc / 1)</td>
+     <td class="side_value">16 MHz</td>
+	</tr>
+<tr><td colspan="4"><hr></td></tr>
+	<tr>
+     <td class="side_label">Clock 0 (sys1 / 4)</td>
+     <td class="side_value">4 MHz</td>
+     <td class="side_label">Clock 1 (sys1 / 1)</td>
+     <td class="side_value">16 MHz</td>
+	</tr>
+	<tr>
+     <td class="side_label">Clock 2 (sys1 / 32)</td>
+     <td class="side_value">500 kHz</td>
+     <td class="side_label">Clock 3 (sys1 / 64)</td>
+     <td class="side_value">250 kHz</td>
+	</tr>
+	<tr>
+     <td class="side_label">Clock 4 (sys1 / 1)</td>
+     <td class="side_value">16 MHz</td>
+     <td class="side_label">Clock 5 (sys1 / 1)</td>
+     <td class="side_value">16 MHz</td>
+	</tr>
+</table>
+<hr>
+<p class=pagebreak><h1>I/O Cells: RESIDUE</h1><table border="1" width="100%" style="border-collapse: collapse">
+	<tr>
+		<th>Name</th>
+		<th>Options</th>
+		<th>Parameters</th>
+		<th>Clocks</th>
+	</tr>
+   	<tr>
+		<td valign="top"><b>IOCell1<br />(ANx3_iocell1 v1.2.1)</b><br />
+		<img border="0" src="RESIDUE_IOCell1.png" /><br />
+		<i>Anadigm (Approved)</i>
+      </td>
+		<td valign="top">
+            <table border="0" width="100%">
+      			<tr>
+				<td class="side_label" width="50%">I/O Mode</td>
+				<td class="side_value">Output</td>
+			</tr>
+			<tr>
+				<td class="side_label" width="50%">Output Type</td>
+				<td class="side_value">Sample and Hold</td>
+			</tr>
+			<tr>
+				<td class="side_label" width="50%">Input Sampling Phase</td>
+				<td class="side_value">Phase 1</td>
+			</tr>
+
+		 </table>
+
+		</td>
+		<td valign="top">
+            <table border="0" width="100%">
+      
+		 </table>
+
+		</td>
+		<td valign="top">
+            <table border="0" width="100%">
+      			<tr>
+				<td class="side_label" width="25%">ClockA</td>
+				<td class="side_value">250 kHz (Chip Clock 3)</td>
+			</tr>
+
+		 </table>
+
+		</td>
+   </tr>
+	<tr>
+		<td valign="top"><b>IOCell2<br />(ANx3_iocell1 v1.2.1)</b><br />
+		<img border="0" src="RESIDUE_IOCell2.png" /><br />
+		<i>Anadigm (Approved)</i>
+      </td>
+		<td valign="top">
+            <table border="0" width="100%">
+      			<tr>
+				<td class="side_label" width="50%">I/O Mode</td>
+				<td class="side_value">Output</td>
+			</tr>
+			<tr>
+				<td class="side_label" width="50%">Output Type</td>
+				<td class="side_value">Sample and Hold</td>
+			</tr>
+			<tr>
+				<td class="side_label" width="50%">Input Sampling Phase</td>
+				<td class="side_value">Phase 1</td>
+			</tr>
+
+		 </table>
+
+		</td>
+		<td valign="top">
+            <table border="0" width="100%">
+      
+		 </table>
+
+		</td>
+		<td valign="top">
+            <table border="0" width="100%">
+      			<tr>
+				<td class="side_label" width="25%">ClockA</td>
+				<td class="side_value">250 kHz (Chip Clock 3)</td>
+			</tr>
+
+		 </table>
+
+		</td>
+   </tr>
+	<tr>
+		<td valign="top"><b>IOCell3<br />(ANx3_iocell1a v1.2.1)</b><br />
+		<img border="0" src="RESIDUE_IOCell3.png" /><br />
+		<i>Anadigm (Approved)</i>
+      </td>
+		<td valign="top">
+            <table border="0" width="100%">
+      			<tr>
+				<td class="side_label" width="50%">I/O Mode</td>
+				<td class="side_value">Input</td>
+			</tr>
+			<tr>
+				<td class="side_label" width="50%">Input Type</td>
+				<td class="side_value">Bypass</td>
+			</tr>
+
+		 </table>
+
+		</td>
+		<td valign="top">
+            <table border="0" width="100%">
+      
+		 </table>
+
+		</td>
+		<td valign="top">
+            <table border="0" width="100%">
+      
+		 </table>
+
+		</td>
+   </tr>
+	<tr>
+		<td valign="top"><b>IOCell4<br />(ANx3_iocell1a v1.2.1)</b><br />
+		<img border="0" src="RESIDUE_IOCell4.png" /><br />
+		<i>Anadigm (Approved)</i>
+      </td>
+		<td valign="top">
+            <table border="0" width="100%">
+      			<tr>
+				<td class="side_label" width="50%">I/O Mode</td>
+				<td class="side_value">Input</td>
+			</tr>
+			<tr>
+				<td class="side_label" width="50%">Input Type</td>
+				<td class="side_value">Bypass</td>
+			</tr>
+
+		 </table>
+
+		</td>
+		<td valign="top">
+            <table border="0" width="100%">
+      
+		 </table>
+
+		</td>
+		<td valign="top">
+            <table border="0" width="100%">
+      
+		 </table>
+
+		</td>
+   </tr>
+	<tr>
+		<td valign="top"><b>IOCell5<br />(ANx3_iocell2 v1.0.1)</b><br />
+		<img border="0" src="RESIDUE_IOCell5.png" /><br />
+		<i>Anadigm (Approved)</i>
+      </td>
+		<td valign="top">
+            <table border="0" width="100%">
+      			<tr>
+				<td class="side_label" width="50%">I/O Mode</td>
+				<td class="side_value">Input</td>
+			</tr>
+			<tr>
+				<td class="side_label" width="50%">Input Type</td>
+				<td class="side_value">Bypass</td>
+			</tr>
+
+		 </table>
+
+		</td>
+		<td valign="top">
+            <table border="0" width="100%">
+      
+		 </table>
+
+		</td>
+		<td valign="top">
+            <table border="0" width="100%">
+      
+		 </table>
+
+		</td>
+   </tr>
+	<tr>
+		<td valign="top"><b>IOCell6<br />(ANx3_iocell2 v1.0.1)</b><br />
+		<img border="0" src="RESIDUE_IOCell6.png" /><br />
+		<i>Anadigm (Approved)</i>
+      </td>
+		<td valign="top">
+            <table border="0" width="100%">
+      			<tr>
+				<td class="side_label" width="50%">I/O Mode</td>
+				<td class="side_value">Input</td>
+			</tr>
+			<tr>
+				<td class="side_label" width="50%">Input Type</td>
+				<td class="side_value">Bypass</td>
+			</tr>
+
+		 </table>
+
+		</td>
+		<td valign="top">
+            <table border="0" width="100%">
+      
+		 </table>
+
+		</td>
+		<td valign="top">
+            <table border="0" width="100%">
+      
+		 </table>
+
+		</td>
+   </tr>
+	<tr>
+		<td valign="top"><b>RAM_Transfer_Cell<br />(ANx3_RAMtransfer v1.0.1)</b><br />
+		<img border="0" src="RESIDUE_RAM_Transfer_Cell.png" /><br />
+		<i>Anadigm (Approved)</i>
+      </td>
+		<td valign="top">
+            <table border="0" width="100%">
+      			<tr>
+				<td class="side_label" width="50%">RAM Transfer Trigger</td>
+				<td class="side_value">Automatic</td>
+			</tr>
+
+		 </table>
+
+		</td>
+		<td valign="top">
+            <table border="0" width="100%">
+      
+		 </table>
+
+		</td>
+		<td valign="top">
+            <table border="0" width="100%">
+      
+		 </table>
+
+		</td>
+   </tr>
+	<tr>
+		<td valign="top"><b>Digital_IOCell<br />(ANx3_DigitalIO v1.0.1)</b><br />
+		<img border="0" src="RESIDUE_Digital_IOCell.png" /><br />
+		<i>Anadigm (Approved)</i>
+      </td>
+		<td valign="top">
+            <table border="0" width="100%">
+      			<tr>
+				<td class="side_label" width="50%">Dout1</td>
+				<td class="side_value">Off</td>
+			</tr>
+			<tr>
+				<td class="side_label" width="50%">Dout1</td>
+				<td class="side_value">Non-inverted</td>
+			</tr>
+			<tr>
+				<td class="side_label" width="50%">Dout2</td>
+				<td class="side_value">Off</td>
+			</tr>
+			<tr>
+				<td class="side_label" width="50%">Dout2</td>
+				<td class="side_value">Non-inverted</td>
+			</tr>
+
+		 </table>
+
+		</td>
+		<td valign="top">
+            <table border="0" width="100%">
+      
+		 </table>
+
+		</td>
+		<td valign="top">
+            <table border="0" width="100%">
+      
+		 </table>
+
+		</td>
+   </tr>
+	<tr>
+		<td valign="top"><b>IOCell7<br />(ANx3_iocell2 v1.0.1)</b><br />
+		<img border="0" src="RESIDUE_IOCell7.png" /><br />
+		<i>Anadigm (Approved)</i>
+      </td>
+		<td valign="top">
+            <table border="0" width="100%">
+      			<tr>
+				<td class="side_label" width="50%">I/O Mode</td>
+				<td class="side_value">Input</td>
+			</tr>
+			<tr>
+				<td class="side_label" width="50%">Input Type</td>
+				<td class="side_value">Bypass</td>
+			</tr>
+
+		 </table>
+
+		</td>
+		<td valign="top">
+            <table border="0" width="100%">
+      
+		 </table>
+
+		</td>
+		<td valign="top">
+            <table border="0" width="100%">
+      
+		 </table>
+
+		</td>
+   </tr>
+
+</table>
+<p class=pagebreak><h1>Configurable Analog Modules: RESIDUE</h1><table border="1" width="100%" style="border-collapse: collapse">
+	<tr>
+		<th>Name</th>
+		<th>Options</th>
+		<th>Parameters</th>
+		<th>Clocks</th>
+	</tr>
+   	<tr>
+		<td valign="top"><b>residue<br />(SumDiff v1.0.1)</b><br />
+		<img border="0" src="RESIDUE_residue.png" /><br />
+		<i>Anadigm (Approved)</i>
+      </td>
+		<td valign="top">
+            <table border="0" width="100%">
+      			<tr>
+				<td class="side_label" width="50%">Output Phase</td>
+				<td class="side_value">Phase 1</td>
+			</tr>
+			<tr>
+				<td class="side_label" width="50%">Input 1</td>
+				<td class="side_value">Non-inverting</td>
+			</tr>
+			<tr>
+				<td class="side_label" width="50%">Input 2</td>
+				<td class="side_value">Inverting</td>
+			</tr>
+			<tr>
+				<td class="side_label" width="50%">Input 3</td>
+				<td class="side_value">Inverting</td>
+			</tr>
+			<tr>
+				<td class="side_label" width="50%">Input 4</td>
+				<td class="side_value">Off</td>
+			</tr>
+
+		 </table>
+
+		</td>
+		<td valign="top">
+            <table border="0" width="100%">
+      			<tr>
+				<td class="side_label" width="75%">Gain 1 (UpperInput)</td>
+				<td class="side_value">3.00</td>
+			</tr>
+			<tr>
+				<td class="side_label" width="75%">Gain 2 (MiddleInput)</td>
+				<td class="side_value">1.00</td>
+			</tr>
+			<tr>
+				<td class="side_label" width="75%">Gain 3 (LowerInput)</td>
+				<td class="side_value">1.00</td>
+			</tr>
+
+		 </table>
+
+		</td>
+		<td valign="top">
+            <table border="0" width="100%">
+      			<tr>
+				<td class="side_label" width="25%">ClockA</td>
+				<td class="side_value">250 kHz (Chip Clock 3)</td>
+			</tr>
+
+		 </table>
+
+		</td>
+   </tr>
+	<tr>
+		<td valign="top"><b>gs_load<br />(GainSwitch v1.1.1)</b><br />
+		<img border="0" src="RESIDUE_gs_load.png" /><br />
+		<i>Anadigm (Approved)</i>
+      </td>
+		<td valign="top">
+            <table border="0" width="100%">
+      			<tr>
+				<td class="side_label" width="50%">Compare Control To</td>
+				<td class="side_value">Signal Ground</td>
+			</tr>
+			<tr>
+				<td class="side_label" width="50%">Select Input 1 When</td>
+				<td class="side_value">Control High</td>
+			</tr>
+			<tr>
+				<td class="side_label" width="50%">Comparator Sampling Phase</td>
+				<td class="side_value">Phase 2</td>
+			</tr>
+			<tr>
+				<td class="side_label" width="50%">Gain Stage</td>
+				<td class="side_value">Half Cycle</td>
+			</tr>
+
+		 </table>
+
+		</td>
+		<td valign="top">
+            <table border="0" width="100%">
+      			<tr>
+				<td class="side_label" width="75%">Gain 1 (UpperInput)</td>
+				<td class="side_value">1.00</td>
+			</tr>
+			<tr>
+				<td class="side_label" width="75%">Gain 2 (LowerInput)</td>
+				<td class="side_value">1.00</td>
+			</tr>
+
+		 </table>
+
+		</td>
+		<td valign="top">
+            <table border="0" width="100%">
+      			<tr>
+				<td class="side_label" width="25%">ClockA</td>
+				<td class="side_value">250 kHz (Chip Clock 3)</td>
+			</tr>
+
+		 </table>
+
+		</td>
+   </tr>
+	<tr>
+		<td valign="top"><b>Z_hold<br />(Hold v1.0.2)</b><br />
+		<img border="0" src="RESIDUE_Z_hold.png" /><br />
+		<i>Anadigm (Approved)</i>
+      </td>
+		<td valign="top">
+            <table border="0" width="100%">
+      			<tr>
+				<td class="side_label" width="50%">Input Sampling Phase</td>
+				<td class="side_value">Phase 2</td>
+			</tr>
+
+		 </table>
+
+		</td>
+		<td valign="top">
+            <table border="0" width="100%">
+      
+		 </table>
+
+		</td>
+		<td valign="top">
+            <table border="0" width="100%">
+      			<tr>
+				<td class="side_label" width="25%">ClockA</td>
+				<td class="side_value">250 kHz (Chip Clock 3)</td>
+			</tr>
+
+		 </table>
+
+		</td>
+   </tr>
+	<tr>
+		<td valign="top"><b>gs_oneOrTwo<br />(GainSwitch v1.1.1)</b><br />
+		<img border="0" src="RESIDUE_gs_oneOrTwo.png" /><br />
+		<i>Anadigm (Approved)</i>
+      </td>
+		<td valign="top">
+            <table border="0" width="100%">
+      			<tr>
+				<td class="side_label" width="50%">Compare Control To</td>
+				<td class="side_value">Variable Reference</td>
+			</tr>
+			<tr>
+				<td class="side_label" width="50%">Select Input 1 When</td>
+				<td class="side_value">Control High</td>
+			</tr>
+			<tr>
+				<td class="side_label" width="50%">Comparator Sampling Phase</td>
+				<td class="side_value">Phase 1</td>
+			</tr>
+			<tr>
+				<td class="side_label" width="50%">Gain Stage</td>
+				<td class="side_value">Half Cycle</td>
+			</tr>
+
+		 </table>
+
+		</td>
+		<td valign="top">
+            <table border="0" width="100%">
+      			<tr>
+				<td class="side_label" width="75%">Gain 1 (UpperInput)</td>
+				<td class="side_value">1.00</td>
+			</tr>
+			<tr>
+				<td class="side_label" width="75%">Gain 2 (LowerInput)</td>
+				<td class="side_value">1.00</td>
+			</tr>
+			<tr>
+				<td class="side_label" width="75%">Reference Voltage</td>
+				<td class="side_value">0.398</td>
+			</tr>
+
+		 </table>
+
+		</td>
+		<td valign="top">
+            <table border="0" width="100%">
+      			<tr>
+				<td class="side_label" width="25%">ClockA</td>
+				<td class="side_value">250 kHz (Chip Clock 3)</td>
+			</tr>
+
+		 </table>
+
+		</td>
+   </tr>
+	<tr>
+		<td valign="top"><b>gs_isTwo<br />(GainSwitch v1.1.1)</b><br />
+		<img border="0" src="RESIDUE_gs_isTwo.png" /><br />
+		<i>Anadigm (Approved)</i>
+      </td>
+		<td valign="top">
+            <table border="0" width="100%">
+      			<tr>
+				<td class="side_label" width="50%">Compare Control To</td>
+				<td class="side_value">Variable Reference</td>
+			</tr>
+			<tr>
+				<td class="side_label" width="50%">Select Input 1 When</td>
+				<td class="side_value">Control High</td>
+			</tr>
+			<tr>
+				<td class="side_label" width="50%">Comparator Sampling Phase</td>
+				<td class="side_value">Phase 1</td>
+			</tr>
+			<tr>
+				<td class="side_label" width="50%">Gain Stage</td>
+				<td class="side_value">Half Cycle</td>
+			</tr>
+
+		 </table>
+
+		</td>
+		<td valign="top">
+            <table border="0" width="100%">
+      			<tr>
+				<td class="side_label" width="75%">Gain 1 (UpperInput)</td>
+				<td class="side_value">1.00</td>
+			</tr>
+			<tr>
+				<td class="side_label" width="75%">Gain 2 (LowerInput)</td>
+				<td class="side_value">1.00</td>
+			</tr>
+			<tr>
+				<td class="side_label" width="75%">Reference Voltage</td>
+				<td class="side_value">0.798</td>
+			</tr>
+
+		 </table>
+
+		</td>
+		<td valign="top">
+            <table border="0" width="100%">
+      			<tr>
+				<td class="side_label" width="25%">ClockA</td>
+				<td class="side_value">250 kHz (Chip Clock 3)</td>
+			</tr>
+
+		 </table>
+
+		</td>
+   </tr>
+	<tr>
+		<td valign="top"><b>inputs_sd<br />(SumDiff v1.0.1)</b><br />
+		<img border="0" src="RESIDUE_inputs_sd.png" /><br />
+		<i>Anadigm (Approved)</i>
+      </td>
+		<td valign="top">
+            <table border="0" width="100%">
+      			<tr>
+				<td class="side_label" width="50%">Output Phase</td>
+				<td class="side_value">Phase 1</td>
+			</tr>
+			<tr>
+				<td class="side_label" width="50%">Input 1</td>
+				<td class="side_value">Non-inverting</td>
+			</tr>
+			<tr>
+				<td class="side_label" width="50%">Input 2</td>
+				<td class="side_value">Non-inverting</td>
+			</tr>
+			<tr>
+				<td class="side_label" width="50%">Input 3</td>
+				<td class="side_value">Off</td>
+			</tr>
+			<tr>
+				<td class="side_label" width="50%">Input 4</td>
+				<td class="side_value">Off</td>
+			</tr>
+
+		 </table>
+
+		</td>
+		<td valign="top">
+            <table border="0" width="100%">
+      			<tr>
+				<td class="side_label" width="75%">Gain 1 (UpperInput)</td>
+				<td class="side_value">1.00</td>
+			</tr>
+			<tr>
+				<td class="side_label" width="75%">Gain 2 (LowerInput)</td>
+				<td class="side_value">1.00</td>
+			</tr>
+
+		 </table>
+
+		</td>
+		<td valign="top">
+            <table border="0" width="100%">
+      			<tr>
+				<td class="side_label" width="25%">ClockA</td>
+				<td class="side_value">250 kHz (Chip Clock 3)</td>
+			</tr>
+
+		 </table>
+
+		</td>
+   </tr>
+
+</table>
+<p class=pagebreak>
+<h1>Chip: NOR_OR</h1><img border="0" src="NOR_OR.png" /><br />
+<h1>Clocks: NOR_OR</h1>
+<hr>
+<table border="0" width="100%">
+	<tr>
+     <td class="side_label">Master Clock - ACLK (fc)</td>
+     <td class="side_value">16 MHz</td>
+     <td class="side_label"></td>
+     <td class="side_value"></td>
+	</tr>
+	<tr>
+     <td class="side_label">System Clock 1 (sys1 = fc / 1)</td>
+     <td class="side_value">16 MHz</td>
+     <td class="side_label">System Clock 2 (sys2 = fc / 1)</td>
+     <td class="side_value">16 MHz</td>
+	</tr>
+<tr><td colspan="4"><hr></td></tr>
+	<tr>
+     <td class="side_label">Clock 0 (sys1 / 4)</td>
+     <td class="side_value">4 MHz</td>
+     <td class="side_label">Clock 1 (sys1 / 1)</td>
+     <td class="side_value">16 MHz</td>
+	</tr>
+	<tr>
+     <td class="side_label">Clock 2 (sys1 / 32)</td>
+     <td class="side_value">500 kHz</td>
+     <td class="side_label">Clock 3 (sys1 / 64)</td>
+     <td class="side_value">250 kHz</td>
+	</tr>
+	<tr>
+     <td class="side_label">Clock 4 (sys1 / 1)</td>
+     <td class="side_value">16 MHz</td>
+     <td class="side_label">Clock 5 (sys1 / 1)</td>
+     <td class="side_value">16 MHz</td>
+	</tr>
+</table>
+<hr>
+<p class=pagebreak><h1>I/O Cells: NOR_OR</h1><table border="1" width="100%" style="border-collapse: collapse">
+	<tr>
+		<th>Name</th>
+		<th>Options</th>
+		<th>Parameters</th>
+		<th>Clocks</th>
+	</tr>
+   	<tr>
+		<td valign="top"><b>IOCell1<br />(ANx3_iocell1 v1.2.1)</b><br />
+		<img border="0" src="NOR_OR_IOCell1.png" /><br />
+		<i>Anadigm (Approved)</i>
+      </td>
+		<td valign="top">
+            <table border="0" width="100%">
+      			<tr>
+				<td class="side_label" width="50%">I/O Mode</td>
+				<td class="side_value">Output</td>
+			</tr>
+			<tr>
+				<td class="side_label" width="50%">Output Type</td>
+				<td class="side_value">Sample and Hold</td>
+			</tr>
+			<tr>
+				<td class="side_label" width="50%">Input Sampling Phase</td>
+				<td class="side_value">Phase 1</td>
+			</tr>
+
+		 </table>
+
+		</td>
+		<td valign="top">
+            <table border="0" width="100%">
+      
+		 </table>
+
+		</td>
+		<td valign="top">
+            <table border="0" width="100%">
+      			<tr>
+				<td class="side_label" width="25%">ClockA</td>
+				<td class="side_value">250 kHz (Chip Clock 3)</td>
+			</tr>
+
+		 </table>
+
+		</td>
+   </tr>
+	<tr>
+		<td valign="top"><b>IOCell2<br />(ANx3_iocell1 v1.2.1)</b><br />
+		<img border="0" src="NOR_OR_IOCell2.png" /><br />
+		<i>Anadigm (Approved)</i>
+      </td>
+		<td valign="top">
+            <table border="0" width="100%">
+      			<tr>
+				<td class="side_label" width="50%">I/O Mode</td>
+				<td class="side_value">Input</td>
+			</tr>
+			<tr>
+				<td class="side_label" width="50%">Input Type</td>
+				<td class="side_value">Bypass</td>
+			</tr>
+
+		 </table>
+
+		</td>
+		<td valign="top">
+            <table border="0" width="100%">
+      
+		 </table>
+
+		</td>
+		<td valign="top">
+            <table border="0" width="100%">
+      
+		 </table>
+
+		</td>
+   </tr>
+	<tr>
+		<td valign="top"><b>IOCell3<br />(ANx3_iocell1a v1.2.1)</b><br />
+		<img border="0" src="NOR_OR_IOCell3.png" /><br />
+		<i>Anadigm (Approved)</i>
+      </td>
+		<td valign="top">
+            <table border="0" width="100%">
+      			<tr>
+				<td class="side_label" width="50%">I/O Mode</td>
+				<td class="side_value">Input</td>
+			</tr>
+			<tr>
+				<td class="side_label" width="50%">Input Type</td>
+				<td class="side_value">Bypass</td>
+			</tr>
+
+		 </table>
+
+		</td>
+		<td valign="top">
+            <table border="0" width="100%">
+      
+		 </table>
+
+		</td>
+		<td valign="top">
+            <table border="0" width="100%">
+      
+		 </table>
+
+		</td>
+   </tr>
+	<tr>
+		<td valign="top"><b>IOCell4<br />(ANx3_iocell1a v1.2.1)</b><br />
+		<img border="0" src="NOR_OR_IOCell4.png" /><br />
+		<i>Anadigm (Approved)</i>
+      </td>
+		<td valign="top">
+            <table border="0" width="100%">
+      			<tr>
+				<td class="side_label" width="50%">I/O Mode</td>
+				<td class="side_value">Output</td>
+			</tr>
+			<tr>
+				<td class="side_label" width="50%">Output Type</td>
+				<td class="side_value">Sample and Hold</td>
+			</tr>
+			<tr>
+				<td class="side_label" width="50%">Input Sampling Phase</td>
+				<td class="side_value">Phase 1</td>
+			</tr>
+
+		 </table>
+
+		</td>
+		<td valign="top">
+            <table border="0" width="100%">
+      
+		 </table>
+
+		</td>
+		<td valign="top">
+            <table border="0" width="100%">
+      			<tr>
+				<td class="side_label" width="25%">ClockA</td>
+				<td class="side_value">250 kHz (Chip Clock 3)</td>
+			</tr>
+
+		 </table>
+
+		</td>
+   </tr>
+	<tr>
+		<td valign="top"><b>IOCell5<br />(ANx3_iocell2 v1.0.1)</b><br />
+		<img border="0" src="NOR_OR_IOCell5.png" /><br />
+		<i>Anadigm (Approved)</i>
+      </td>
+		<td valign="top">
+            <table border="0" width="100%">
+      			<tr>
+				<td class="side_label" width="50%">I/O Mode</td>
+				<td class="side_value">Input</td>
+			</tr>
+			<tr>
+				<td class="side_label" width="50%">Input Type</td>
+				<td class="side_value">Bypass</td>
+			</tr>
+
+		 </table>
+
+		</td>
+		<td valign="top">
+            <table border="0" width="100%">
+      
+		 </table>
+
+		</td>
+		<td valign="top">
+            <table border="0" width="100%">
+      
+		 </table>
+
+		</td>
+   </tr>
+	<tr>
+		<td valign="top"><b>IOCell6<br />(ANx3_iocell2 v1.0.1)</b><br />
+		<img border="0" src="NOR_OR_IOCell6.png" /><br />
+		<i>Anadigm (Approved)</i>
+      </td>
+		<td valign="top">
+            <table border="0" width="100%">
+      			<tr>
+				<td class="side_label" width="50%">I/O Mode</td>
+				<td class="side_value">Off</td>
+			</tr>
+
+		 </table>
+
+		</td>
+		<td valign="top">
+            <table border="0" width="100%">
+      
+		 </table>
+
+		</td>
+		<td valign="top">
+            <table border="0" width="100%">
+      
+		 </table>
+
+		</td>
+   </tr>
+	<tr>
+		<td valign="top"><b>RAM_Transfer_Cell<br />(ANx3_RAMtransfer v1.0.1)</b><br />
+		<img border="0" src="NOR_OR_RAM_Transfer_Cell.png" /><br />
+		<i>Anadigm (Approved)</i>
+      </td>
+		<td valign="top">
+            <table border="0" width="100%">
+      			<tr>
+				<td class="side_label" width="50%">RAM Transfer Trigger</td>
+				<td class="side_value">Automatic</td>
+			</tr>
+
+		 </table>
+
+		</td>
+		<td valign="top">
+            <table border="0" width="100%">
+      
+		 </table>
+
+		</td>
+		<td valign="top">
+            <table border="0" width="100%">
+      
+		 </table>
+
+		</td>
+   </tr>
+	<tr>
+		<td valign="top"><b>Digital_IOCell<br />(ANx3_DigitalIO v1.0.1)</b><br />
+		<img border="0" src="NOR_OR_Digital_IOCell.png" /><br />
+		<i>Anadigm (Approved)</i>
+      </td>
+		<td valign="top">
+            <table border="0" width="100%">
+      			<tr>
+				<td class="side_label" width="50%">Dout1</td>
+				<td class="side_value">Off</td>
+			</tr>
+			<tr>
+				<td class="side_label" width="50%">Dout1</td>
+				<td class="side_value">Non-inverted</td>
+			</tr>
+			<tr>
+				<td class="side_label" width="50%">Dout2</td>
+				<td class="side_value">Off</td>
+			</tr>
+			<tr>
+				<td class="side_label" width="50%">Dout2</td>
+				<td class="side_value">Non-inverted</td>
+			</tr>
+
+		 </table>
+
+		</td>
+		<td valign="top">
+            <table border="0" width="100%">
+      
+		 </table>
+
+		</td>
+		<td valign="top">
+            <table border="0" width="100%">
+      
+		 </table>
+
+		</td>
+   </tr>
+	<tr>
+		<td valign="top"><b>IOCell7<br />(ANx3_iocell2 v1.0.1)</b><br />
+		<img border="0" src="NOR_OR_IOCell7.png" /><br />
+		<i>Anadigm (Approved)</i>
+      </td>
+		<td valign="top">
+            <table border="0" width="100%">
+      			<tr>
+				<td class="side_label" width="50%">I/O Mode</td>
+				<td class="side_value">Input</td>
+			</tr>
+			<tr>
+				<td class="side_label" width="50%">Input Type</td>
+				<td class="side_value">Bypass</td>
+			</tr>
+
+		 </table>
+
+		</td>
+		<td valign="top">
+            <table border="0" width="100%">
+      
+		 </table>
+
+		</td>
+		<td valign="top">
+            <table border="0" width="100%">
+      
+		 </table>
+
+		</td>
+   </tr>
+
+</table>
+<p class=pagebreak><h1>Configurable Analog Modules: NOR_OR</h1><table border="1" width="100%" style="border-collapse: collapse">
+	<tr>
+		<th>Name</th>
+		<th>Options</th>
+		<th>Parameters</th>
+		<th>Clocks</th>
+	</tr>
+   	<tr>
+		<td valign="top"><b>acc_nor<br />(SumDiff v1.0.1)</b><br />
+		<img border="0" src="NOR_OR_acc_nor.png" /><br />
+		<i>Anadigm (Approved)</i>
+      </td>
+		<td valign="top">
+            <table border="0" width="100%">
+      			<tr>
+				<td class="side_label" width="50%">Output Phase</td>
+				<td class="side_value">Phase 2</td>
+			</tr>
+			<tr>
+				<td class="side_label" width="50%">Input 1</td>
+				<td class="side_value">Non-inverting</td>
+			</tr>
+			<tr>
+				<td class="side_label" width="50%">Input 2</td>
+				<td class="side_value">Non-inverting</td>
+			</tr>
+			<tr>
+				<td class="side_label" width="50%">Input 3</td>
+				<td class="side_value">Off</td>
+			</tr>
+			<tr>
+				<td class="side_label" width="50%">Input 4</td>
+				<td class="side_value">Off</td>
+			</tr>
+
+		 </table>
+
+		</td>
+		<td valign="top">
+            <table border="0" width="100%">
+      			<tr>
+				<td class="side_label" width="75%">Gain 1 (UpperInput)</td>
+				<td class="side_value">3.00</td>
+			</tr>
+			<tr>
+				<td class="side_label" width="75%">Gain 2 (LowerInput)</td>
+				<td class="side_value">1.00</td>
+			</tr>
+
+		 </table>
+
+		</td>
+		<td valign="top">
+            <table border="0" width="100%">
+      			<tr>
+				<td class="side_label" width="25%">ClockA</td>
+				<td class="side_value">250 kHz (Chip Clock 3)</td>
+			</tr>
+
+		 </table>
+
+		</td>
+   </tr>
+	<tr>
+		<td valign="top"><b>gs_nor<br />(GainSwitch v1.1.1)</b><br />
+		<img border="0" src="NOR_OR_gs_nor.png" /><br />
+		<i>Anadigm (Approved)</i>
+      </td>
+		<td valign="top">
+            <table border="0" width="100%">
+      			<tr>
+				<td class="side_label" width="50%">Compare Control To</td>
+				<td class="side_value">Variable Reference</td>
+			</tr>
+			<tr>
+				<td class="side_label" width="50%">Select Input 1 When</td>
+				<td class="side_value">Control Low</td>
+			</tr>
+			<tr>
+				<td class="side_label" width="50%">Comparator Sampling Phase</td>
+				<td class="side_value">Phase 1</td>
+			</tr>
+			<tr>
+				<td class="side_label" width="50%">Gain Stage</td>
+				<td class="side_value">Half Cycle</td>
+			</tr>
+
+		 </table>
+
+		</td>
+		<td valign="top">
+            <table border="0" width="100%">
+      			<tr>
+				<td class="side_label" width="75%">Gain 1 (UpperInput)</td>
+				<td class="side_value">1.00</td>
+			</tr>
+			<tr>
+				<td class="side_label" width="75%">Gain 2 (LowerInput)</td>
+				<td class="side_value">1.00</td>
+			</tr>
+			<tr>
+				<td class="side_label" width="75%">Reference Voltage</td>
+				<td class="side_value">0.600</td>
+			</tr>
+
+		 </table>
+
+		</td>
+		<td valign="top">
+            <table border="0" width="100%">
+      			<tr>
+				<td class="side_label" width="25%">ClockA</td>
+				<td class="side_value">250 kHz (Chip Clock 3)</td>
+			</tr>
+
+		 </table>
+
+		</td>
+   </tr>
+	<tr>
+		<td valign="top"><b>gs_reset_nor<br />(GainSwitch v1.1.1)</b><br />
+		<img border="0" src="NOR_OR_gs_reset_nor.png" /><br />
+		<i>Anadigm (Approved)</i>
+      </td>
+		<td valign="top">
+            <table border="0" width="100%">
+      			<tr>
+				<td class="side_label" width="50%">Compare Control To</td>
+				<td class="side_value">Signal Ground</td>
+			</tr>
+			<tr>
+				<td class="side_label" width="50%">Select Input 1 When</td>
+				<td class="side_value">Control High</td>
+			</tr>
+			<tr>
+				<td class="side_label" width="50%">Comparator Sampling Phase</td>
+				<td class="side_value">Phase 1</td>
+			</tr>
+			<tr>
+				<td class="side_label" width="50%">Gain Stage</td>
+				<td class="side_value">Half Cycle</td>
+			</tr>
+
+		 </table>
+
+		</td>
+		<td valign="top">
+            <table border="0" width="100%">
+      			<tr>
+				<td class="side_label" width="75%">Gain 1 (UpperInput)</td>
+				<td class="side_value">1.00</td>
+			</tr>
+			<tr>
+				<td class="side_label" width="75%">Gain 2 (LowerInput)</td>
+				<td class="side_value">1.00</td>
+			</tr>
+
+		 </table>
+
+		</td>
+		<td valign="top">
+            <table border="0" width="100%">
+      			<tr>
+				<td class="side_label" width="25%">ClockA</td>
+				<td class="side_value">250 kHz (Chip Clock 3)</td>
+			</tr>
+
+		 </table>
+
+		</td>
+   </tr>
+	<tr>
+		<td valign="top"><b>nor_hold<br />(Hold v1.0.2)</b><br />
+		<img border="0" src="NOR_OR_nor_hold.png" /><br />
+		<i>Anadigm (Approved)</i>
+      </td>
+		<td valign="top">
+            <table border="0" width="100%">
+      			<tr>
+				<td class="side_label" width="50%">Input Sampling Phase</td>
+				<td class="side_value">Phase 1</td>
+			</tr>
+
+		 </table>
+
+		</td>
+		<td valign="top">
+            <table border="0" width="100%">
+      
+		 </table>
+
+		</td>
+		<td valign="top">
+            <table border="0" width="100%">
+      			<tr>
+				<td class="side_label" width="25%">ClockA</td>
+				<td class="side_value">250 kHz (Chip Clock 3)</td>
+			</tr>
+
+		 </table>
+
+		</td>
+   </tr>
+	<tr>
+		<td valign="top"><b>not_nor_sd<br />(SumDiff v1.0.1)</b><br />
+		<img border="0" src="NOR_OR_not_nor_sd.png" /><br />
+		<i>Anadigm (Approved)</i>
+      </td>
+		<td valign="top">
+            <table border="0" width="100%">
+      			<tr>
+				<td class="side_label" width="50%">Output Phase</td>
+				<td class="side_value">Phase 1</td>
+			</tr>
+			<tr>
+				<td class="side_label" width="50%">Input 1</td>
+				<td class="side_value">Non-inverting</td>
+			</tr>
+			<tr>
+				<td class="side_label" width="50%">Input 2</td>
+				<td class="side_value">Inverting</td>
+			</tr>
+			<tr>
+				<td class="side_label" width="50%">Input 3</td>
+				<td class="side_value">Off</td>
+			</tr>
+			<tr>
+				<td class="side_label" width="50%">Input 4</td>
+				<td class="side_value">Off</td>
+			</tr>
+
+		 </table>
+
+		</td>
+		<td valign="top">
+            <table border="0" width="100%">
+      			<tr>
+				<td class="side_label" width="75%">Gain 1 (UpperInput)</td>
+				<td class="side_value">40.0</td>
+			</tr>
+			<tr>
+				<td class="side_label" width="75%">Gain 2 (LowerInput)</td>
+				<td class="side_value">1.00</td>
+			</tr>
+
+		 </table>
+
+		</td>
+		<td valign="top">
+            <table border="0" width="100%">
+      			<tr>
+				<td class="side_label" width="25%">ClockA</td>
+				<td class="side_value">250 kHz (Chip Clock 3)</td>
+			</tr>
+
+		 </table>
+
+		</td>
+   </tr>
+
+</table>
+<p class=pagebreak>
+<h1>Chip: AND_NAND</h1><img border="0" src="AND_NAND.png" /><br />
+<h1>Clocks: AND_NAND</h1>
+<hr>
+<table border="0" width="100%">
+	<tr>
+     <td class="side_label">Master Clock - ACLK (fc)</td>
+     <td class="side_value">16 MHz</td>
+     <td class="side_label"></td>
+     <td class="side_value"></td>
+	</tr>
+	<tr>
+     <td class="side_label">System Clock 1 (sys1 = fc / 1)</td>
+     <td class="side_value">16 MHz</td>
+     <td class="side_label">System Clock 2 (sys2 = fc / 1)</td>
+     <td class="side_value">16 MHz</td>
+	</tr>
+<tr><td colspan="4"><hr></td></tr>
+	<tr>
+     <td class="side_label">Clock 0 (sys1 / 4)</td>
+     <td class="side_value">4 MHz</td>
+     <td class="side_label">Clock 1 (sys1 / 1)</td>
+     <td class="side_value">16 MHz</td>
+	</tr>
+	<tr>
+     <td class="side_label">Clock 2 (sys1 / 32)</td>
+     <td class="side_value">500 kHz</td>
+     <td class="side_label">Clock 3 (sys1 / 64)</td>
+     <td class="side_value">250 kHz</td>
+	</tr>
+	<tr>
+     <td class="side_label">Clock 4 (sys1 / 1)</td>
+     <td class="side_value">16 MHz</td>
+     <td class="side_label">Clock 5 (sys1 / 1)</td>
+     <td class="side_value">16 MHz</td>
+	</tr>
+</table>
+<hr>
+<p class=pagebreak><h1>I/O Cells: AND_NAND</h1><table border="1" width="100%" style="border-collapse: collapse">
+	<tr>
+		<th>Name</th>
+		<th>Options</th>
+		<th>Parameters</th>
+		<th>Clocks</th>
+	</tr>
+   	<tr>
+		<td valign="top"><b>IOCell1<br />(ANx3_iocell1 v1.2.1)</b><br />
+		<img border="0" src="AND_NAND_IOCell1.png" /><br />
+		<i>Anadigm (Approved)</i>
+      </td>
+		<td valign="top">
+            <table border="0" width="100%">
+      			<tr>
+				<td class="side_label" width="50%">I/O Mode</td>
+				<td class="side_value">Output</td>
+			</tr>
+			<tr>
+				<td class="side_label" width="50%">Output Type</td>
+				<td class="side_value">Sample and Hold</td>
+			</tr>
+			<tr>
+				<td class="side_label" width="50%">Input Sampling Phase</td>
+				<td class="side_value">Phase 1</td>
+			</tr>
+
+		 </table>
+
+		</td>
+		<td valign="top">
+            <table border="0" width="100%">
+      
+		 </table>
+
+		</td>
+		<td valign="top">
+            <table border="0" width="100%">
+      			<tr>
+				<td class="side_label" width="25%">ClockA</td>
+				<td class="side_value">250 kHz (Chip Clock 3)</td>
+			</tr>
+
+		 </table>
+
+		</td>
+   </tr>
+	<tr>
+		<td valign="top"><b>IOCell2<br />(ANx3_iocell1 v1.2.1)</b><br />
+		<img border="0" src="AND_NAND_IOCell2.png" /><br />
+		<i>Anadigm (Approved)</i>
+      </td>
+		<td valign="top">
+            <table border="0" width="100%">
+      			<tr>
+				<td class="side_label" width="50%">I/O Mode</td>
+				<td class="side_value">Input</td>
+			</tr>
+			<tr>
+				<td class="side_label" width="50%">Input Type</td>
+				<td class="side_value">Bypass</td>
+			</tr>
+
+		 </table>
+
+		</td>
+		<td valign="top">
+            <table border="0" width="100%">
+      
+		 </table>
+
+		</td>
+		<td valign="top">
+            <table border="0" width="100%">
+      
+		 </table>
+
+		</td>
+   </tr>
+	<tr>
+		<td valign="top"><b>IOCell3<br />(ANx3_iocell1a v1.2.1)</b><br />
+		<img border="0" src="AND_NAND_IOCell3.png" /><br />
+		<i>Anadigm (Approved)</i>
+      </td>
+		<td valign="top">
+            <table border="0" width="100%">
+      			<tr>
+				<td class="side_label" width="50%">I/O Mode</td>
+				<td class="side_value">Input</td>
+			</tr>
+			<tr>
+				<td class="side_label" width="50%">Input Type</td>
+				<td class="side_value">Bypass</td>
+			</tr>
+
+		 </table>
+
+		</td>
+		<td valign="top">
+            <table border="0" width="100%">
+      
+		 </table>
+
+		</td>
+		<td valign="top">
+            <table border="0" width="100%">
+      
+		 </table>
+
+		</td>
+   </tr>
+	<tr>
+		<td valign="top"><b>IOCell4<br />(ANx3_iocell1a v1.2.1)</b><br />
+		<img border="0" src="AND_NAND_IOCell4.png" /><br />
+		<i>Anadigm (Approved)</i>
+      </td>
+		<td valign="top">
+            <table border="0" width="100%">
+      			<tr>
+				<td class="side_label" width="50%">I/O Mode</td>
+				<td class="side_value">Output</td>
+			</tr>
+			<tr>
+				<td class="side_label" width="50%">Output Type</td>
+				<td class="side_value">Sample and Hold</td>
+			</tr>
+			<tr>
+				<td class="side_label" width="50%">Input Sampling Phase</td>
+				<td class="side_value">Phase 1</td>
+			</tr>
+
+		 </table>
+
+		</td>
+		<td valign="top">
+            <table border="0" width="100%">
+      
+		 </table>
+
+		</td>
+		<td valign="top">
+            <table border="0" width="100%">
+      			<tr>
+				<td class="side_label" width="25%">ClockA</td>
+				<td class="side_value">250 kHz (Chip Clock 3)</td>
+			</tr>
+
+		 </table>
+
+		</td>
+   </tr>
+	<tr>
+		<td valign="top"><b>IOCell5<br />(ANx3_iocell2 v1.0.1)</b><br />
+		<img border="0" src="AND_NAND_IOCell5.png" /><br />
+		<i>Anadigm (Approved)</i>
+      </td>
+		<td valign="top">
+            <table border="0" width="100%">
+      			<tr>
+				<td class="side_label" width="50%">I/O Mode</td>
+				<td class="side_value">Off</td>
+			</tr>
+
+		 </table>
+
+		</td>
+		<td valign="top">
+            <table border="0" width="100%">
+      
+		 </table>
+
+		</td>
+		<td valign="top">
+            <table border="0" width="100%">
+      
+		 </table>
+
+		</td>
+   </tr>
+	<tr>
+		<td valign="top"><b>IOCell6<br />(ANx3_iocell2 v1.0.1)</b><br />
+		<img border="0" src="AND_NAND_IOCell6.png" /><br />
+		<i>Anadigm (Approved)</i>
+      </td>
+		<td valign="top">
+            <table border="0" width="100%">
+      			<tr>
+				<td class="side_label" width="50%">I/O Mode</td>
+				<td class="side_value">Input</td>
+			</tr>
+			<tr>
+				<td class="side_label" width="50%">Input Type</td>
+				<td class="side_value">Bypass</td>
+			</tr>
+
+		 </table>
+
+		</td>
+		<td valign="top">
+            <table border="0" width="100%">
+      
+		 </table>
+
+		</td>
+		<td valign="top">
+            <table border="0" width="100%">
+      
+		 </table>
+
+		</td>
+   </tr>
+	<tr>
+		<td valign="top"><b>RAM_Transfer_Cell<br />(ANx3_RAMtransfer v1.0.1)</b><br />
+		<img border="0" src="AND_NAND_RAM_Transfer_Cell.png" /><br />
+		<i>Anadigm (Approved)</i>
+      </td>
+		<td valign="top">
+            <table border="0" width="100%">
+      			<tr>
+				<td class="side_label" width="50%">RAM Transfer Trigger</td>
+				<td class="side_value">Automatic</td>
+			</tr>
+
+		 </table>
+
+		</td>
+		<td valign="top">
+            <table border="0" width="100%">
+      
+		 </table>
+
+		</td>
+		<td valign="top">
+            <table border="0" width="100%">
+      
+		 </table>
+
+		</td>
+   </tr>
+	<tr>
+		<td valign="top"><b>Digital_IOCell<br />(ANx3_DigitalIO v1.0.1)</b><br />
+		<img border="0" src="AND_NAND_Digital_IOCell.png" /><br />
+		<i>Anadigm (Approved)</i>
+      </td>
+		<td valign="top">
+            <table border="0" width="100%">
+      			<tr>
+				<td class="side_label" width="50%">Dout1</td>
+				<td class="side_value">Off</td>
+			</tr>
+			<tr>
+				<td class="side_label" width="50%">Dout1</td>
+				<td class="side_value">Non-inverted</td>
+			</tr>
+			<tr>
+				<td class="side_label" width="50%">Dout2</td>
+				<td class="side_value">Off</td>
+			</tr>
+			<tr>
+				<td class="side_label" width="50%">Dout2</td>
+				<td class="side_value">Non-inverted</td>
+			</tr>
+
+		 </table>
+
+		</td>
+		<td valign="top">
+            <table border="0" width="100%">
+      
+		 </table>
+
+		</td>
+		<td valign="top">
+            <table border="0" width="100%">
+      
+		 </table>
+
+		</td>
+   </tr>
+	<tr>
+		<td valign="top"><b>IOCell7<br />(ANx3_iocell2 v1.0.1)</b><br />
+		<img border="0" src="AND_NAND_IOCell7.png" /><br />
+		<i>Anadigm (Approved)</i>
+      </td>
+		<td valign="top">
+            <table border="0" width="100%">
+      			<tr>
+				<td class="side_label" width="50%">I/O Mode</td>
+				<td class="side_value">Input</td>
+			</tr>
+			<tr>
+				<td class="side_label" width="50%">Input Type</td>
+				<td class="side_value">Bypass</td>
+			</tr>
+
+		 </table>
+
+		</td>
+		<td valign="top">
+            <table border="0" width="100%">
+      
+		 </table>
+
+		</td>
+		<td valign="top">
+            <table border="0" width="100%">
+      
+		 </table>
+
+		</td>
+   </tr>
+
+</table>
+<p class=pagebreak><h1>Configurable Analog Modules: AND_NAND</h1><table border="1" width="100%" style="border-collapse: collapse">
+	<tr>
+		<th>Name</th>
+		<th>Options</th>
+		<th>Parameters</th>
+		<th>Clocks</th>
+	</tr>
+   	<tr>
+		<td valign="top"><b>acc_and<br />(SumDiff v1.0.1)</b><br />
+		<img border="0" src="AND_NAND_acc_and.png" /><br />
+		<i>Anadigm (Approved)</i>
+      </td>
+		<td valign="top">
+            <table border="0" width="100%">
+      			<tr>
+				<td class="side_label" width="50%">Output Phase</td>
+				<td class="side_value">Phase 2</td>
+			</tr>
+			<tr>
+				<td class="side_label" width="50%">Input 1</td>
+				<td class="side_value">Non-inverting</td>
+			</tr>
+			<tr>
+				<td class="side_label" width="50%">Input 2</td>
+				<td class="side_value">Non-inverting</td>
+			</tr>
+			<tr>
+				<td class="side_label" width="50%">Input 3</td>
+				<td class="side_value">Off</td>
+			</tr>
+			<tr>
+				<td class="side_label" width="50%">Input 4</td>
+				<td class="side_value">Off</td>
+			</tr>
+
+		 </table>
+
+		</td>
+		<td valign="top">
+            <table border="0" width="100%">
+      			<tr>
+				<td class="side_label" width="75%">Gain 1 (UpperInput)</td>
+				<td class="side_value">3.00</td>
+			</tr>
+			<tr>
+				<td class="side_label" width="75%">Gain 2 (LowerInput)</td>
+				<td class="side_value">1.00</td>
+			</tr>
+
+		 </table>
+
+		</td>
+		<td valign="top">
+            <table border="0" width="100%">
+      			<tr>
+				<td class="side_label" width="25%">ClockA</td>
+				<td class="side_value">250 kHz (Chip Clock 3)</td>
+			</tr>
+
+		 </table>
+
+		</td>
+   </tr>
+	<tr>
+		<td valign="top"><b>gs_and<br />(GainSwitch v1.1.1)</b><br />
+		<img border="0" src="AND_NAND_gs_and.png" /><br />
+		<i>Anadigm (Approved)</i>
+      </td>
+		<td valign="top">
+            <table border="0" width="100%">
+      			<tr>
+				<td class="side_label" width="50%">Compare Control To</td>
+				<td class="side_value">Variable Reference</td>
+			</tr>
+			<tr>
+				<td class="side_label" width="50%">Select Input 1 When</td>
+				<td class="side_value">Control High</td>
+			</tr>
+			<tr>
+				<td class="side_label" width="50%">Comparator Sampling Phase</td>
+				<td class="side_value">Phase 1</td>
+			</tr>
+			<tr>
+				<td class="side_label" width="50%">Gain Stage</td>
+				<td class="side_value">Half Cycle</td>
+			</tr>
+
+		 </table>
+
+		</td>
+		<td valign="top">
+            <table border="0" width="100%">
+      			<tr>
+				<td class="side_label" width="75%">Gain 1 (UpperInput)</td>
+				<td class="side_value">1.00</td>
+			</tr>
+			<tr>
+				<td class="side_label" width="75%">Gain 2 (LowerInput)</td>
+				<td class="side_value">1.00</td>
+			</tr>
+			<tr>
+				<td class="side_label" width="75%">Reference Voltage</td>
+				<td class="side_value">0.600</td>
+			</tr>
+
+		 </table>
+
+		</td>
+		<td valign="top">
+            <table border="0" width="100%">
+      			<tr>
+				<td class="side_label" width="25%">ClockA</td>
+				<td class="side_value">250 kHz (Chip Clock 3)</td>
+			</tr>
+
+		 </table>
+
+		</td>
+   </tr>
+	<tr>
+		<td valign="top"><b>gs_reset_and<br />(GainSwitch v1.1.1)</b><br />
+		<img border="0" src="AND_NAND_gs_reset_and.png" /><br />
+		<i>Anadigm (Approved)</i>
+      </td>
+		<td valign="top">
+            <table border="0" width="100%">
+      			<tr>
+				<td class="side_label" width="50%">Compare Control To</td>
+				<td class="side_value">Signal Ground</td>
+			</tr>
+			<tr>
+				<td class="side_label" width="50%">Select Input 1 When</td>
+				<td class="side_value">Control High</td>
+			</tr>
+			<tr>
+				<td class="side_label" width="50%">Comparator Sampling Phase</td>
+				<td class="side_value">Phase 1</td>
+			</tr>
+			<tr>
+				<td class="side_label" width="50%">Gain Stage</td>
+				<td class="side_value">Half Cycle</td>
+			</tr>
+
+		 </table>
+
+		</td>
+		<td valign="top">
+            <table border="0" width="100%">
+      			<tr>
+				<td class="side_label" width="75%">Gain 1 (UpperInput)</td>
+				<td class="side_value">1.00</td>
+			</tr>
+			<tr>
+				<td class="side_label" width="75%">Gain 2 (LowerInput)</td>
+				<td class="side_value">1.00</td>
+			</tr>
+
+		 </table>
+
+		</td>
+		<td valign="top">
+            <table border="0" width="100%">
+      			<tr>
+				<td class="side_label" width="25%">ClockA</td>
+				<td class="side_value">250 kHz (Chip Clock 3)</td>
+			</tr>
+
+		 </table>
+
+		</td>
+   </tr>
+	<tr>
+		<td valign="top"><b>and_hold<br />(Hold v1.0.2)</b><br />
+		<img border="0" src="AND_NAND_and_hold.png" /><br />
+		<i>Anadigm (Approved)</i>
+      </td>
+		<td valign="top">
+            <table border="0" width="100%">
+      			<tr>
+				<td class="side_label" width="50%">Input Sampling Phase</td>
+				<td class="side_value">Phase 1</td>
+			</tr>
+
+		 </table>
+
+		</td>
+		<td valign="top">
+            <table border="0" width="100%">
+      
+		 </table>
+
+		</td>
+		<td valign="top">
+            <table border="0" width="100%">
+      			<tr>
+				<td class="side_label" width="25%">ClockA</td>
+				<td class="side_value">250 kHz (Chip Clock 3)</td>
+			</tr>
+
+		 </table>
+
+		</td>
+   </tr>
+	<tr>
+		<td valign="top"><b>not_and_sd<br />(SumDiff v1.0.1)</b><br />
+		<img border="0" src="AND_NAND_not_and_sd.png" /><br />
+		<i>Anadigm (Approved)</i>
+      </td>
+		<td valign="top">
+            <table border="0" width="100%">
+      			<tr>
+				<td class="side_label" width="50%">Output Phase</td>
+				<td class="side_value">Phase 1</td>
+			</tr>
+			<tr>
+				<td class="side_label" width="50%">Input 1</td>
+				<td class="side_value">Non-inverting</td>
+			</tr>
+			<tr>
+				<td class="side_label" width="50%">Input 2</td>
+				<td class="side_value">Inverting</td>
+			</tr>
+			<tr>
+				<td class="side_label" width="50%">Input 3</td>
+				<td class="side_value">Off</td>
+			</tr>
+			<tr>
+				<td class="side_label" width="50%">Input 4</td>
+				<td class="side_value">Off</td>
+			</tr>
+
+		 </table>
+
+		</td>
+		<td valign="top">
+            <table border="0" width="100%">
+      			<tr>
+				<td class="side_label" width="75%">Gain 1 (UpperInput)</td>
+				<td class="side_value">40.0</td>
+			</tr>
+			<tr>
+				<td class="side_label" width="75%">Gain 2 (LowerInput)</td>
+				<td class="side_value">1.00</td>
+			</tr>
+
+		 </table>
+
+		</td>
+		<td valign="top">
+            <table border="0" width="100%">
+      			<tr>
+				<td class="side_label" width="25%">ClockA</td>
+				<td class="side_value">250 kHz (Chip Clock 3)</td>
+			</tr>
+
+		 </table>
+
+		</td>
+   </tr>
+
+</table>
+<p class=pagebreak>
+<h1>Chip: XOR_XNOR</h1><img border="0" src="XOR_XNOR.png" /><br />
+<h1>Clocks: XOR_XNOR</h1>
+<hr>
+<table border="0" width="100%">
+	<tr>
+     <td class="side_label">Master Clock - ACLK (fc)</td>
+     <td class="side_value">16 MHz</td>
+     <td class="side_label"></td>
+     <td class="side_value"></td>
+	</tr>
+	<tr>
+     <td class="side_label">System Clock 1 (sys1 = fc / 1)</td>
+     <td class="side_value">16 MHz</td>
+     <td class="side_label">System Clock 2 (sys2 = fc / 1)</td>
+     <td class="side_value">16 MHz</td>
+	</tr>
+<tr><td colspan="4"><hr></td></tr>
+	<tr>
+     <td class="side_label">Clock 0 (sys1 / 4)</td>
+     <td class="side_value">4 MHz</td>
+     <td class="side_label">Clock 1 (sys1 / 1)</td>
+     <td class="side_value">16 MHz</td>
+	</tr>
+	<tr>
+     <td class="side_label">Clock 2 (sys1 / 8)</td>
+     <td class="side_value">2 MHz</td>
+     <td class="side_label">Clock 3 (sys1 / 64)</td>
+     <td class="side_value">250 kHz</td>
+	</tr>
+	<tr>
+     <td class="side_label">Clock 4 (sys1 / 1)</td>
+     <td class="side_value">16 MHz</td>
+     <td class="side_label">Clock 5 (sys1 / 1)</td>
+     <td class="side_value">16 MHz</td>
+	</tr>
+</table>
+<hr>
+<p class=pagebreak><h1>I/O Cells: XOR_XNOR</h1><table border="1" width="100%" style="border-collapse: collapse">
+	<tr>
+		<th>Name</th>
+		<th>Options</th>
+		<th>Parameters</th>
+		<th>Clocks</th>
+	</tr>
+   	<tr>
+		<td valign="top"><b>IOCell1<br />(ANx3_iocell1 v1.2.1)</b><br />
+		<img border="0" src="XOR_XNOR_IOCell1.png" /><br />
+		<i>Anadigm (Approved)</i>
+      </td>
+		<td valign="top">
+            <table border="0" width="100%">
+      			<tr>
+				<td class="side_label" width="50%">I/O Mode</td>
+				<td class="side_value">Output</td>
+			</tr>
+			<tr>
+				<td class="side_label" width="50%">Output Type</td>
+				<td class="side_value">Sample and Hold</td>
+			</tr>
+			<tr>
+				<td class="side_label" width="50%">Input Sampling Phase</td>
+				<td class="side_value">Phase 1</td>
+			</tr>
+
+		 </table>
+
+		</td>
+		<td valign="top">
+            <table border="0" width="100%">
+      
+		 </table>
+
+		</td>
+		<td valign="top">
+            <table border="0" width="100%">
+      			<tr>
+				<td class="side_label" width="25%">ClockA</td>
+				<td class="side_value">250 kHz (Chip Clock 3)</td>
+			</tr>
+
+		 </table>
+
+		</td>
+   </tr>
+	<tr>
+		<td valign="top"><b>IOCell2<br />(ANx3_iocell1 v1.2.1)</b><br />
+		<img border="0" src="XOR_XNOR_IOCell2.png" /><br />
+		<i>Anadigm (Approved)</i>
+      </td>
+		<td valign="top">
+            <table border="0" width="100%">
+      			<tr>
+				<td class="side_label" width="50%">I/O Mode</td>
+				<td class="side_value">Input</td>
+			</tr>
+			<tr>
+				<td class="side_label" width="50%">Input Type</td>
+				<td class="side_value">Bypass</td>
+			</tr>
+
+		 </table>
+
+		</td>
+		<td valign="top">
+            <table border="0" width="100%">
+      
+		 </table>
+
+		</td>
+		<td valign="top">
+            <table border="0" width="100%">
+      
+		 </table>
+
+		</td>
+   </tr>
+	<tr>
+		<td valign="top"><b>IOCell3<br />(ANx3_iocell1a v1.2.1)</b><br />
+		<img border="0" src="XOR_XNOR_IOCell3.png" /><br />
+		<i>Anadigm (Approved)</i>
+      </td>
+		<td valign="top">
+            <table border="0" width="100%">
+      			<tr>
+				<td class="side_label" width="50%">I/O Mode</td>
+				<td class="side_value">Input</td>
+			</tr>
+			<tr>
+				<td class="side_label" width="50%">Input Type</td>
+				<td class="side_value">Bypass</td>
+			</tr>
+
+		 </table>
+
+		</td>
+		<td valign="top">
+            <table border="0" width="100%">
+      
+		 </table>
+
+		</td>
+		<td valign="top">
+            <table border="0" width="100%">
+      
+		 </table>
+
+		</td>
+   </tr>
+	<tr>
+		<td valign="top"><b>IOCell4<br />(ANx3_iocell1a v1.2.1)</b><br />
+		<img border="0" src="XOR_XNOR_IOCell4.png" /><br />
+		<i>Anadigm (Approved)</i>
+      </td>
+		<td valign="top">
+            <table border="0" width="100%">
+      			<tr>
+				<td class="side_label" width="50%">I/O Mode</td>
+				<td class="side_value">Output</td>
+			</tr>
+			<tr>
+				<td class="side_label" width="50%">Output Type</td>
+				<td class="side_value">Sample and Hold</td>
+			</tr>
+			<tr>
+				<td class="side_label" width="50%">Input Sampling Phase</td>
+				<td class="side_value">Phase 1</td>
+			</tr>
+
+		 </table>
+
+		</td>
+		<td valign="top">
+            <table border="0" width="100%">
+      
+		 </table>
+
+		</td>
+		<td valign="top">
+            <table border="0" width="100%">
+      			<tr>
+				<td class="side_label" width="25%">ClockA</td>
+				<td class="side_value">250 kHz (Chip Clock 3)</td>
+			</tr>
+
+		 </table>
+
+		</td>
+   </tr>
+	<tr>
+		<td valign="top"><b>IOCell5<br />(ANx3_iocell2 v1.0.1)</b><br />
+		<img border="0" src="XOR_XNOR_IOCell5.png" /><br />
+		<i>Anadigm (Approved)</i>
+      </td>
+		<td valign="top">
+            <table border="0" width="100%">
+      			<tr>
+				<td class="side_label" width="50%">I/O Mode</td>
+				<td class="side_value">Input</td>
+			</tr>
+			<tr>
+				<td class="side_label" width="50%">Input Type</td>
+				<td class="side_value">Bypass</td>
+			</tr>
+
+		 </table>
+
+		</td>
+		<td valign="top">
+            <table border="0" width="100%">
+      
+		 </table>
+
+		</td>
+		<td valign="top">
+            <table border="0" width="100%">
+      
+		 </table>
+
+		</td>
+   </tr>
+	<tr>
+		<td valign="top"><b>IOCell6<br />(ANx3_iocell2 v1.0.1)</b><br />
+		<img border="0" src="XOR_XNOR_IOCell6.png" /><br />
+		<i>Anadigm (Approved)</i>
+      </td>
+		<td valign="top">
+            <table border="0" width="100%">
+      			<tr>
+				<td class="side_label" width="50%">I/O Mode</td>
+				<td class="side_value">Input</td>
+			</tr>
+			<tr>
+				<td class="side_label" width="50%">Input Type</td>
+				<td class="side_value">Bypass</td>
+			</tr>
+
+		 </table>
+
+		</td>
+		<td valign="top">
+            <table border="0" width="100%">
+      
+		 </table>
+
+		</td>
+		<td valign="top">
+            <table border="0" width="100%">
+      
+		 </table>
+
+		</td>
+   </tr>
+	<tr>
+		<td valign="top"><b>RAM_Transfer_Cell<br />(ANx3_RAMtransfer v1.0.1)</b><br />
+		<img border="0" src="XOR_XNOR_RAM_Transfer_Cell.png" /><br />
+		<i>Anadigm (Approved)</i>
+      </td>
+		<td valign="top">
+            <table border="0" width="100%">
+      			<tr>
+				<td class="side_label" width="50%">RAM Transfer Trigger</td>
+				<td class="side_value">Automatic</td>
+			</tr>
+
+		 </table>
+
+		</td>
+		<td valign="top">
+            <table border="0" width="100%">
+      
+		 </table>
+
+		</td>
+		<td valign="top">
+            <table border="0" width="100%">
+      
+		 </table>
+
+		</td>
+   </tr>
+	<tr>
+		<td valign="top"><b>Digital_IOCell<br />(ANx3_DigitalIO v1.0.1)</b><br />
+		<img border="0" src="XOR_XNOR_Digital_IOCell.png" /><br />
+		<i>Anadigm (Approved)</i>
+      </td>
+		<td valign="top">
+            <table border="0" width="100%">
+      			<tr>
+				<td class="side_label" width="50%">Dout1</td>
+				<td class="side_value">Off</td>
+			</tr>
+			<tr>
+				<td class="side_label" width="50%">Dout1</td>
+				<td class="side_value">Non-inverted</td>
+			</tr>
+			<tr>
+				<td class="side_label" width="50%">Dout2</td>
+				<td class="side_value">Off</td>
+			</tr>
+			<tr>
+				<td class="side_label" width="50%">Dout2</td>
+				<td class="side_value">Non-inverted</td>
+			</tr>
+
+		 </table>
+
+		</td>
+		<td valign="top">
+            <table border="0" width="100%">
+      
+		 </table>
+
+		</td>
+		<td valign="top">
+            <table border="0" width="100%">
+      
+		 </table>
+
+		</td>
+   </tr>
+	<tr>
+		<td valign="top"><b>IOCell7<br />(ANx3_iocell2 v1.0.1)</b><br />
+		<img border="0" src="XOR_XNOR_IOCell7.png" /><br />
+		<i>Anadigm (Approved)</i>
+      </td>
+		<td valign="top">
+            <table border="0" width="100%">
+      			<tr>
+				<td class="side_label" width="50%">I/O Mode</td>
+				<td class="side_value">Input</td>
+			</tr>
+			<tr>
+				<td class="side_label" width="50%">Input Type</td>
+				<td class="side_value">Bypass</td>
+			</tr>
+
+		 </table>
+
+		</td>
+		<td valign="top">
+            <table border="0" width="100%">
+      
+		 </table>
+
+		</td>
+		<td valign="top">
+            <table border="0" width="100%">
+      
+		 </table>
+
+		</td>
+   </tr>
+
+</table>
+<p class=pagebreak><h1>Configurable Analog Modules: XOR_XNOR</h1><table border="1" width="100%" style="border-collapse: collapse">
+	<tr>
+		<th>Name</th>
+		<th>Options</th>
+		<th>Parameters</th>
+		<th>Clocks</th>
+	</tr>
+   	<tr>
+		<td valign="top"><b>gs_xor<br />(GainSwitch v1.1.1)</b><br />
+		<img border="0" src="XOR_XNOR_gs_xor.png" /><br />
+		<i>Anadigm (Approved)</i>
+      </td>
+		<td valign="top">
+            <table border="0" width="100%">
+      			<tr>
+				<td class="side_label" width="50%">Compare Control To</td>
+				<td class="side_value">Variable Reference</td>
+			</tr>
+			<tr>
+				<td class="side_label" width="50%">Select Input 1 When</td>
+				<td class="side_value">Control High</td>
+			</tr>
+			<tr>
+				<td class="side_label" width="50%">Comparator Sampling Phase</td>
+				<td class="side_value">Phase 1</td>
+			</tr>
+			<tr>
+				<td class="side_label" width="50%">Gain Stage</td>
+				<td class="side_value">Half Cycle</td>
+			</tr>
+
+		 </table>
+
+		</td>
+		<td valign="top">
+            <table border="0" width="100%">
+      			<tr>
+				<td class="side_label" width="75%">Gain 1 (UpperInput)</td>
+				<td class="side_value">1.00</td>
+			</tr>
+			<tr>
+				<td class="side_label" width="75%">Gain 2 (LowerInput)</td>
+				<td class="side_value">1.00</td>
+			</tr>
+			<tr>
+				<td class="side_label" width="75%">Reference Voltage</td>
+				<td class="side_value">0.600</td>
+			</tr>
+
+		 </table>
+
+		</td>
+		<td valign="top">
+            <table border="0" width="100%">
+      			<tr>
+				<td class="side_label" width="25%">ClockA</td>
+				<td class="side_value">250 kHz (Chip Clock 3)</td>
+			</tr>
+
+		 </table>
+
+		</td>
+   </tr>
+	<tr>
+		<td valign="top"><b>SumDiff1<br />(SumDiff v1.0.1)</b><br />
+		<img border="0" src="XOR_XNOR_SumDiff1.png" /><br />
+		<i>Anadigm (Approved)</i>
+      </td>
+		<td valign="top">
+            <table border="0" width="100%">
+      			<tr>
+				<td class="side_label" width="50%">Output Phase</td>
+				<td class="side_value">Phase 1</td>
+			</tr>
+			<tr>
+				<td class="side_label" width="50%">Input 1</td>
+				<td class="side_value">Non-inverting</td>
+			</tr>
+			<tr>
+				<td class="side_label" width="50%">Input 2</td>
+				<td class="side_value">Inverting</td>
+			</tr>
+			<tr>
+				<td class="side_label" width="50%">Input 3</td>
+				<td class="side_value">Off</td>
+			</tr>
+			<tr>
+				<td class="side_label" width="50%">Input 4</td>
+				<td class="side_value">Off</td>
+			</tr>
+
+		 </table>
+
+		</td>
+		<td valign="top">
+            <table border="0" width="100%">
+      			<tr>
+				<td class="side_label" width="75%">Gain 1 (UpperInput)</td>
+				<td class="side_value">1.00</td>
+			</tr>
+			<tr>
+				<td class="side_label" width="75%">Gain 2 (LowerInput)</td>
+				<td class="side_value">1.00</td>
+			</tr>
+
+		 </table>
+
+		</td>
+		<td valign="top">
+            <table border="0" width="100%">
+      			<tr>
+				<td class="side_label" width="25%">ClockA</td>
+				<td class="side_value">250 kHz (Chip Clock 3)</td>
+			</tr>
+
+		 </table>
+
+		</td>
+   </tr>
+	<tr>
+		<td valign="top"><b>acc_and<br />(SumDiff v1.0.1)</b><br />
+		<img border="0" src="XOR_XNOR_acc_and.png" /><br />
+		<i>Anadigm (Approved)</i>
+      </td>
+		<td valign="top">
+            <table border="0" width="100%">
+      			<tr>
+				<td class="side_label" width="50%">Output Phase</td>
+				<td class="side_value">Phase 2</td>
+			</tr>
+			<tr>
+				<td class="side_label" width="50%">Input 1</td>
+				<td class="side_value">Non-inverting</td>
+			</tr>
+			<tr>
+				<td class="side_label" width="50%">Input 2</td>
+				<td class="side_value">Non-inverting</td>
+			</tr>
+			<tr>
+				<td class="side_label" width="50%">Input 3</td>
+				<td class="side_value">Off</td>
+			</tr>
+			<tr>
+				<td class="side_label" width="50%">Input 4</td>
+				<td class="side_value">Off</td>
+			</tr>
+
+		 </table>
+
+		</td>
+		<td valign="top">
+            <table border="0" width="100%">
+      			<tr>
+				<td class="side_label" width="75%">Gain 1 (UpperInput)</td>
+				<td class="side_value">3.00</td>
+			</tr>
+			<tr>
+				<td class="side_label" width="75%">Gain 2 (LowerInput)</td>
+				<td class="side_value">1.00</td>
+			</tr>
+
+		 </table>
+
+		</td>
+		<td valign="top">
+            <table border="0" width="100%">
+      			<tr>
+				<td class="side_label" width="25%">ClockA</td>
+				<td class="side_value">250 kHz (Chip Clock 3)</td>
+			</tr>
+
+		 </table>
+
+		</td>
+   </tr>
+	<tr>
+		<td valign="top"><b>gs_reset_and<br />(GainSwitch v1.1.1)</b><br />
+		<img border="0" src="XOR_XNOR_gs_reset_and.png" /><br />
+		<i>Anadigm (Approved)</i>
+      </td>
+		<td valign="top">
+            <table border="0" width="100%">
+      			<tr>
+				<td class="side_label" width="50%">Compare Control To</td>
+				<td class="side_value">Signal Ground</td>
+			</tr>
+			<tr>
+				<td class="side_label" width="50%">Select Input 1 When</td>
+				<td class="side_value">Control High</td>
+			</tr>
+			<tr>
+				<td class="side_label" width="50%">Comparator Sampling Phase</td>
+				<td class="side_value">Phase 1</td>
+			</tr>
+			<tr>
+				<td class="side_label" width="50%">Gain Stage</td>
+				<td class="side_value">Half Cycle</td>
+			</tr>
+
+		 </table>
+
+		</td>
+		<td valign="top">
+            <table border="0" width="100%">
+      			<tr>
+				<td class="side_label" width="75%">Gain 1 (UpperInput)</td>
+				<td class="side_value">1.00</td>
+			</tr>
+			<tr>
+				<td class="side_label" width="75%">Gain 2 (LowerInput)</td>
+				<td class="side_value">1.00</td>
+			</tr>
+
+		 </table>
+
+		</td>
+		<td valign="top">
+            <table border="0" width="100%">
+      			<tr>
+				<td class="side_label" width="25%">ClockA</td>
+				<td class="side_value">250 kHz (Chip Clock 3)</td>
+			</tr>
+
+		 </table>
+
+		</td>
+   </tr>
+	<tr>
+		<td valign="top"><b>and_hold<br />(Hold v1.0.2)</b><br />
+		<img border="0" src="XOR_XNOR_and_hold.png" /><br />
+		<i>Anadigm (Approved)</i>
+      </td>
+		<td valign="top">
+            <table border="0" width="100%">
+      			<tr>
+				<td class="side_label" width="50%">Input Sampling Phase</td>
+				<td class="side_value">Phase 1</td>
+			</tr>
+
+		 </table>
+
+		</td>
+		<td valign="top">
+            <table border="0" width="100%">
+      
+		 </table>
+
+		</td>
+		<td valign="top">
+            <table border="0" width="100%">
+      			<tr>
+				<td class="side_label" width="25%">ClockA</td>
+				<td class="side_value">250 kHz (Chip Clock 3)</td>
+			</tr>
+
+		 </table>
+
+		</td>
+   </tr>
+	<tr>
+		<td valign="top"><b>not_and_sd<br />(SumDiff v1.0.1)</b><br />
+		<img border="0" src="XOR_XNOR_not_and_sd.png" /><br />
+		<i>Anadigm (Approved)</i>
+      </td>
+		<td valign="top">
+            <table border="0" width="100%">
+      			<tr>
+				<td class="side_label" width="50%">Output Phase</td>
+				<td class="side_value">Phase 1</td>
+			</tr>
+			<tr>
+				<td class="side_label" width="50%">Input 1</td>
+				<td class="side_value">Non-inverting</td>
+			</tr>
+			<tr>
+				<td class="side_label" width="50%">Input 2</td>
+				<td class="side_value">Inverting</td>
+			</tr>
+			<tr>
+				<td class="side_label" width="50%">Input 3</td>
+				<td class="side_value">Off</td>
+			</tr>
+			<tr>
+				<td class="side_label" width="50%">Input 4</td>
+				<td class="side_value">Off</td>
+			</tr>
+
+		 </table>
+
+		</td>
+		<td valign="top">
+            <table border="0" width="100%">
+      			<tr>
+				<td class="side_label" width="75%">Gain 1 (UpperInput)</td>
+				<td class="side_value">40.0</td>
+			</tr>
+			<tr>
+				<td class="side_label" width="75%">Gain 2 (LowerInput)</td>
+				<td class="side_value">1.00</td>
+			</tr>
+
+		 </table>
+
+		</td>
+		<td valign="top">
+            <table border="0" width="100%">
+      			<tr>
+				<td class="side_label" width="25%">ClockA</td>
+				<td class="side_value">250 kHz (Chip Clock 3)</td>
+			</tr>
+
+		 </table>
+
+		</td>
+   </tr>
+
+</table>
+<p class=pagebreak>
+<h1>Chip: OUTPUT</h1><img border="0" src="OUTPUT.png" /><br />
+<h1>Clocks: OUTPUT</h1>
+<hr>
+<table border="0" width="100%">
+	<tr>
+     <td class="side_label">Master Clock - ACLK (fc)</td>
+     <td class="side_value">16 MHz</td>
+     <td class="side_label"></td>
+     <td class="side_value"></td>
+	</tr>
+	<tr>
+     <td class="side_label">System Clock 1 (sys1 = fc / 1)</td>
+     <td class="side_value">16 MHz</td>
+     <td class="side_label">System Clock 2 (sys2 = fc / 1)</td>
+     <td class="side_value">16 MHz</td>
+	</tr>
+<tr><td colspan="4"><hr></td></tr>
+	<tr>
+     <td class="side_label">Clock 0 (sys1 / 4)</td>
+     <td class="side_value">4 MHz</td>
+     <td class="side_label">Clock 1 (sys1 / 1)</td>
+     <td class="side_value">16 MHz</td>
+	</tr>
+	<tr>
+     <td class="side_label">Clock 2 (sys1 / 8)</td>
+     <td class="side_value">2 MHz</td>
+     <td class="side_label">Clock 3 (sys1 / 64)</td>
+     <td class="side_value">250 kHz</td>
+	</tr>
+	<tr>
+     <td class="side_label">Clock 4 (sys1 / 1)</td>
+     <td class="side_value">16 MHz</td>
+     <td class="side_label">Clock 5 (sys1 / 1)</td>
+     <td class="side_value">16 MHz</td>
+	</tr>
+</table>
+<hr>
+<p class=pagebreak><h1>I/O Cells: OUTPUT</h1><table border="1" width="100%" style="border-collapse: collapse">
+	<tr>
+		<th>Name</th>
+		<th>Options</th>
+		<th>Parameters</th>
+		<th>Clocks</th>
+	</tr>
+   	<tr>
+		<td valign="top"><b>IOCell1<br />(ANx3_iocell1 v1.2.1)</b><br />
+		<img border="0" src="OUTPUT_IOCell1.png" /><br />
+		<i>Anadigm (Approved)</i>
+      </td>
+		<td valign="top">
+            <table border="0" width="100%">
+      			<tr>
+				<td class="side_label" width="50%">I/O Mode</td>
+				<td class="side_value">Input</td>
+			</tr>
+			<tr>
+				<td class="side_label" width="50%">Input Type</td>
+				<td class="side_value">Bypass</td>
+			</tr>
+
+		 </table>
+
+		</td>
+		<td valign="top">
+            <table border="0" width="100%">
+      
+		 </table>
+
+		</td>
+		<td valign="top">
+            <table border="0" width="100%">
+      
+		 </table>
+
+		</td>
+   </tr>
+	<tr>
+		<td valign="top"><b>IOCell2<br />(ANx3_iocell1 v1.2.1)</b><br />
+		<img border="0" src="OUTPUT_IOCell2.png" /><br />
+		<i>Anadigm (Approved)</i>
+      </td>
+		<td valign="top">
+            <table border="0" width="100%">
+      			<tr>
+				<td class="side_label" width="50%">I/O Mode</td>
+				<td class="side_value">Input</td>
+			</tr>
+			<tr>
+				<td class="side_label" width="50%">Input Type</td>
+				<td class="side_value">Bypass</td>
+			</tr>
+
+		 </table>
+
+		</td>
+		<td valign="top">
+            <table border="0" width="100%">
+      
+		 </table>
+
+		</td>
+		<td valign="top">
+            <table border="0" width="100%">
+      
+		 </table>
+
+		</td>
+   </tr>
+	<tr>
+		<td valign="top"><b>IOCell3<br />(ANx3_iocell1a v1.2.1)</b><br />
+		<img border="0" src="OUTPUT_IOCell3.png" /><br />
+		<i>Anadigm (Approved)</i>
+      </td>
+		<td valign="top">
+            <table border="0" width="100%">
+      			<tr>
+				<td class="side_label" width="50%">I/O Mode</td>
+				<td class="side_value">Input</td>
+			</tr>
+			<tr>
+				<td class="side_label" width="50%">Input Type</td>
+				<td class="side_value">Bypass</td>
+			</tr>
+
+		 </table>
+
+		</td>
+		<td valign="top">
+            <table border="0" width="100%">
+      
+		 </table>
+
+		</td>
+		<td valign="top">
+            <table border="0" width="100%">
+      
+		 </table>
+
+		</td>
+   </tr>
+	<tr>
+		<td valign="top"><b>IOCell4<br />(ANx3_iocell1a v1.2.1)</b><br />
+		<img border="0" src="OUTPUT_IOCell4.png" /><br />
+		<i>Anadigm (Approved)</i>
+      </td>
+		<td valign="top">
+            <table border="0" width="100%">
+      			<tr>
+				<td class="side_label" width="50%">I/O Mode</td>
+				<td class="side_value">Input</td>
+			</tr>
+			<tr>
+				<td class="side_label" width="50%">Input Type</td>
+				<td class="side_value">Bypass</td>
+			</tr>
+
+		 </table>
+
+		</td>
+		<td valign="top">
+            <table border="0" width="100%">
+      
+		 </table>
+
+		</td>
+		<td valign="top">
+            <table border="0" width="100%">
+      
+		 </table>
+
+		</td>
+   </tr>
+	<tr>
+		<td valign="top"><b>IOCell5<br />(ANx3_iocell2 v1.0.1)</b><br />
+		<img border="0" src="OUTPUT_IOCell5.png" /><br />
+		<i>Anadigm (Approved)</i>
+      </td>
+		<td valign="top">
+            <table border="0" width="100%">
+      			<tr>
+				<td class="side_label" width="50%">I/O Mode</td>
+				<td class="side_value">Input</td>
+			</tr>
+			<tr>
+				<td class="side_label" width="50%">Input Type</td>
+				<td class="side_value">Bypass</td>
+			</tr>
+
+		 </table>
+
+		</td>
+		<td valign="top">
+            <table border="0" width="100%">
+      
+		 </table>
+
+		</td>
+		<td valign="top">
+            <table border="0" width="100%">
+      
+		 </table>
+
+		</td>
+   </tr>
+	<tr>
+		<td valign="top"><b>IOCell6<br />(ANx3_iocell2 v1.0.1)</b><br />
+		<img border="0" src="OUTPUT_IOCell6.png" /><br />
+		<i>Anadigm (Approved)</i>
+      </td>
+		<td valign="top">
+            <table border="0" width="100%">
+      			<tr>
+				<td class="side_label" width="50%">I/O Mode</td>
+				<td class="side_value">Input</td>
+			</tr>
+			<tr>
+				<td class="side_label" width="50%">Input Type</td>
+				<td class="side_value">Bypass</td>
+			</tr>
+
+		 </table>
+
+		</td>
+		<td valign="top">
+            <table border="0" width="100%">
+      
+		 </table>
+
+		</td>
+		<td valign="top">
+            <table border="0" width="100%">
+      
+		 </table>
+
+		</td>
+   </tr>
+	<tr>
+		<td valign="top"><b>RAM_Transfer_Cell<br />(ANx3_RAMtransfer v1.0.1)</b><br />
+		<img border="0" src="OUTPUT_RAM_Transfer_Cell.png" /><br />
+		<i>Anadigm (Approved)</i>
+      </td>
+		<td valign="top">
+            <table border="0" width="100%">
+      			<tr>
+				<td class="side_label" width="50%">RAM Transfer Trigger</td>
+				<td class="side_value">Automatic</td>
+			</tr>
+
+		 </table>
+
+		</td>
+		<td valign="top">
+            <table border="0" width="100%">
+      
+		 </table>
+
+		</td>
+		<td valign="top">
+            <table border="0" width="100%">
+      
+		 </table>
+
+		</td>
+   </tr>
+	<tr>
+		<td valign="top"><b>Digital_IOCell<br />(ANx3_DigitalIO v1.0.1)</b><br />
+		<img border="0" src="OUTPUT_Digital_IOCell.png" /><br />
+		<i>Anadigm (Approved)</i>
+      </td>
+		<td valign="top">
+            <table border="0" width="100%">
+      			<tr>
+				<td class="side_label" width="50%">Dout1</td>
+				<td class="side_value">Off</td>
+			</tr>
+			<tr>
+				<td class="side_label" width="50%">Dout1</td>
+				<td class="side_value">Non-inverted</td>
+			</tr>
+			<tr>
+				<td class="side_label" width="50%">Dout2</td>
+				<td class="side_value">Off</td>
+			</tr>
+			<tr>
+				<td class="side_label" width="50%">Dout2</td>
+				<td class="side_value">Non-inverted</td>
+			</tr>
+
+		 </table>
+
+		</td>
+		<td valign="top">
+            <table border="0" width="100%">
+      
+		 </table>
+
+		</td>
+		<td valign="top">
+            <table border="0" width="100%">
+      
+		 </table>
+
+		</td>
+   </tr>
+	<tr>
+		<td valign="top"><b>IOCell7<br />(ANx3_iocell2 v1.0.1)</b><br />
+		<img border="0" src="OUTPUT_IOCell7.png" /><br />
+		<i>Anadigm (Approved)</i>
+      </td>
+		<td valign="top">
+            <table border="0" width="100%">
+      			<tr>
+				<td class="side_label" width="50%">I/O Mode</td>
+				<td class="side_value">Off</td>
+			</tr>
+
+		 </table>
+
+		</td>
+		<td valign="top">
+            <table border="0" width="100%">
+      
+		 </table>
+
+		</td>
+		<td valign="top">
+            <table border="0" width="100%">
+      
+		 </table>
+
+		</td>
+   </tr>
+
+</table>
+<p class=pagebreak><h1>Configurable Analog Modules: OUTPUT</h1><table border="1" width="100%" style="border-collapse: collapse">
+	<tr>
+		<th>Name</th>
+		<th>Options</th>
+		<th>Parameters</th>
+		<th>Clocks</th>
+	</tr>
+   <tr><td colspan=4><p align=center><i>No Configurable Analog Modules (CAMs) Found</i></p></td></tr>
+
+</table>
+</div></body>
+</html>

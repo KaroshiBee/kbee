@@ -1,0 +1,14 @@
+---
+title: "Base-N algorithm with N−1 inputs"
+subtitle: "Carry-free digit sums; derived NOR/AND/XOR/XNOR"
+author: "kbee"
+date: "2026-04-29"
+lang: en-US
+geometry:
+  - margin=1in
+fontsize: 11pt
+toc: true
+toc-depth: 3
+numbersections: true
+---
+

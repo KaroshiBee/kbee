@@ -1,0 +1,10 @@
+* text=auto
+
+# Repo convention: LF-only for tracked text files.
+*.md   text eol=lf
+*.mdc  text eol=lf
+*.sh   text eol=lf
+*.py   text eol=lf
+*.yaml text eol=lf
+*.yml  text eol=lf
+*.csv  text eol=lf
