@@ -1,6 +1,6 @@
+(lang dune 3.17)
 ; SPDX-License-Identifier: LGPL-3.0-or-later
 ; Copyright (c) 2026 Karoshibee LTD
-(lang dune 3.17)
 
 (name kbee_fpga)
 
@@ -15,5 +15,6 @@
   dune
   core
   hardcaml
+  ounit2
   ppx_jane
   ppxlib))

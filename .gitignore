@@ -23,6 +23,11 @@ asic/ngspice/out/
 # direnv's cached per-env state (keep .envrc itself tracked)
 .direnv/
 
+# OCaml / Dune
+fpga/_build/
+fpga/kbee_fpga.opam
+*.install
+
 # Python bytecode (scripts/ is module-importable now)
 __pycache__/
 *.pyc

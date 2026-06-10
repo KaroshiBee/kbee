@@ -1,0 +1,9 @@
+; SPDX-License-Identifier: LGPL-3.0-or-later
+; Copyright (c) 2026 Karoshibee LTD
+
+(tests
+ (names test_sawtooth test_pause test_kbee_sum test_kbee_cell)
+ (libraries kbee_fpga hardcaml core ounit2)
+ (flags (:standard -alert -deprecated))
+ (preprocess
+  (pps ppx_jane)))

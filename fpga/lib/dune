@@ -1,0 +1,10 @@
+; SPDX-License-Identifier: LGPL-3.0-or-later
+; Copyright (c) 2026 Karoshibee LTD
+
+(library
+ (name kbee_fpga)
+ (public_name kbee_fpga)
+ (wrapped false)
+ (libraries hardcaml core)
+ (preprocess
+  (pps ppx_jane)))

@@ -30,7 +30,8 @@
               ocaml-overlay.overlays.default
               (import ./fpga/nix/overlay.nix)
               (_: prev: {
-                ocamlPackages = prev.ocaml-ng.ocamlPackages;
+                # hardcaml 0.17.0 does not build against OCaml 5.4 parsetree yet
+                ocamlPackages = prev.ocaml-ng.ocamlPackages_5_3;
               })
             ];
           };
@@ -247,11 +248,33 @@
               set -euo pipefail
 
               ROOT="$(git rev-parse --show-toplevel)"
-              cd "$ROOT"
+              workdir=""
+              cleanup() {
+                if [ -n "$workdir" ] && [ -d "$workdir" ]; then
+                  rm -rf "$workdir"
+                fi
+              }
+              trap cleanup EXIT
+
+              if [ -n "''${KBEE_CHECK_REV:-}" ]; then
+                echo "check-format-kbee: tree ''${KBEE_CHECK_REV}"
+                workdir="$(mktemp -d)"
+                git -C "$ROOT" archive "''${KBEE_CHECK_REV}" | tar -x -C "$workdir"
+                cd "$workdir"
+              else
+                echo "check-format-kbee: working tree"
+                cd "$ROOT"
+              fi
 
               fail=0
 
-              py_files="$(git ls-files '*.py' || true)"
+              list_glob() {
+                find . -type f -name "$1" ! -path './proofs/.lake/*' \
+                  ! -path './.hypothesis/*' ! -path './.direnv/*' \
+                  | sed 's|^\./||' | sort
+              }
+
+              py_files="$(list_glob '*.py' || true)"
               if [ -n "$py_files" ]; then
                 echo "==> Python (ruff format --check)"
                 if ! xargs -r ruff format --check <<< "$py_files"; then
@@ -259,7 +282,7 @@
                 fi
               fi
 
-              sh_files="$(git ls-files '*.sh' || true)"
+              sh_files="$(list_glob '*.sh' || true)"
               if [ -n "$sh_files" ]; then
                 echo "==> Shell (shfmt -d)"
                 if ! xargs -r shfmt -d -i 2 -ci -bn -sr -kp <<< "$sh_files"; then
@@ -267,7 +290,7 @@
                 fi
               fi
 
-              nix_files="$(git ls-files '*.nix' || true)"
+              nix_files="$(list_glob '*.nix' || true)"
               if [ -n "$nix_files" ]; then
                 echo "==> Nix (alejandra --check)"
                 if ! xargs -r alejandra --check <<< "$nix_files"; then
@@ -275,7 +298,7 @@
                 fi
               fi
 
-              md_files="$(git ls-files '*.md' || true)"
+              md_files="$(list_glob '*.md' || true)"
               if [ -n "$md_files" ]; then
                 echo "==> Markdown (mdformat --check)"
                 if ! xargs -r mdformat --check <<< "$md_files"; then
@@ -283,7 +306,7 @@
                 fi
               fi
 
-              toml_files="$(git ls-files '*.toml' || true)"
+              toml_files="$(list_glob '*.toml' || true)"
               if [ -n "$toml_files" ]; then
                 echo "==> TOML (taplo format --check)"
                 if ! xargs -r taplo format --check <<< "$toml_files"; then
@@ -291,7 +314,8 @@
                 fi
               fi
 
-              yaml_files="$(git ls-files '*.yaml' '*.yml' || true)"
+              yaml_files="$(find . -type f \( -name '*.yaml' -o -name '*.yml' \) \
+                ! -path './proofs/.lake/*' | sed 's|^\./||' | sort || true)"
               if [ -n "$yaml_files" ]; then
                 echo "==> YAML (taplo format --check)"
                 if ! xargs -r taplo format --check <<< "$yaml_files"; then
@@ -317,7 +341,23 @@
               set -euo pipefail
 
               ROOT="$(git rev-parse --show-toplevel)"
-              cd "$ROOT"
+              workdir=""
+              cleanup() {
+                if [ -n "$workdir" ] && [ -d "$workdir" ]; then
+                  rm -rf "$workdir"
+                fi
+              }
+              trap cleanup EXIT
+
+              if [ -n "''${KBEE_CHECK_REV:-}" ]; then
+                echo "check-license-headers: tree ''${KBEE_CHECK_REV}"
+                workdir="$(mktemp -d)"
+                git -C "$ROOT" archive "''${KBEE_CHECK_REV}" | tar -x -C "$workdir"
+                cd "$workdir"
+              else
+                echo "check-license-headers: working tree"
+                cd "$ROOT"
+              fi
 
               HEADER_PATTERN='SPDX-License-Identifier|Copyright'
               RG_SKIP=(
@@ -341,11 +381,11 @@
                 printf 'MISSING (rg): %s\n' "''${missing_rg[@]}"
                 fail=1
               else
-                echo "ok — all on-disk .py/.sh outside excluded trees have SPDX or Copyright"
+                echo "ok — all .py/.sh have SPDX or Copyright"
               fi
 
               echo ""
-              echo "==> git ls-files header check (.py / .sh / .nix / .lean)"
+              echo "==> header check (.py / .sh / .nix / .lean)"
               missing_git=()
               total_git=0
               while IFS= read -r f; do
@@ -353,12 +393,15 @@
                 if ! head -5 "$f" | grep -q Copyright; then
                   missing_git+=("$f")
                 fi
-              done < <(git ls-files '*.py' '*.sh' '*.nix' '*.lean')
+              done < <(
+                find . -type f \( -name '*.py' -o -name '*.sh' -o -name '*.nix' -o -name '*.lean' \) \
+                  ! -path './proofs/.lake/*' | sed 's|^\./||' | sort
+              )
               if ((''${#missing_git[@]})); then
                 printf 'MISSING (git): %s\n' "''${missing_git[@]}"
                 fail=1
               else
-                echo "ok — checked $total_git tracked files"
+                echo "ok — checked $total_git source files"
               fi
 
               echo ""
@@ -487,6 +530,8 @@
                 ocamlPackages.merlin
                 ocamlPackages.ocaml-lsp
                 ocamlPackages.utop
+                ocamlPackages.hardcaml
+                ocamlPackages.ounit2
                 ocamlformat
               ];
               shellHook = ''
