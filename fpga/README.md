@@ -77,10 +77,16 @@ Ground-truth oracle outside this tree: [`python/kbee.py`](../python/kbee.py) →
 
 | Module | File | Role |
 |--------|------|------|
-| `Sawtooth` | `lib/sawtooth.ml` | Master phase counter + wrap strobe |
+| `Sawtooth` | `lib/sawtooth.ml` | Master phase counter + wrap strobe (one per chip) |
 | `Pausable_sampler` | `lib/pausable_sampler.ml` | `lag = phase − ptr (mod P)` |
-| `Kbee_cell` | `lib/kbee_cell.ml` | Top FSM: sum → 8-tick residue + accumulators |
-| `Kbee_cell_sim` | `lib/kbee_cell_sim.ml` | Cycle-sim harness (tests only) |
+| `Kbee_cell` | `lib/kbee_cell.ml` | Cell FSM: sum → 8-tick residue + accumulators |
+| `Kbee_top` | `lib/kbee_top.ml` | One cell + dedicated sawtooth (convenience wrapper) |
+| `Kbee_system` | `lib/kbee_system.ml` | Two cells sharing one sawtooth |
+| `Kbee_cell_sim` | `lib/kbee_cell_sim.ml` | Cycle-sim harness for `Kbee_top` (tests only) |
+
+Instantiate **one** `Sawtooth` per FPGA and fan `phase` / `wrap` to every
+`Kbee_cell`. Use `Kbee_top` when the design has a single cell; use
+`Kbee_system` (or duplicate its `cell_on_bus` pattern) for several.
 
 ### Shared
 

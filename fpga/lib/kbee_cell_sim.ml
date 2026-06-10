@@ -1,18 +1,18 @@
 (* SPDX-License-Identifier: LGPL-3.0-or-later *)
 (* Copyright (c) 2026 Karoshibee LTD *)
 
-(** HardCaml cycle-sim harness for {!Kbee_cell} — not oracle code. *)
+(** HardCaml cycle-sim harness for {!Kbee_top} — not oracle code. *)
 
 open Hardcaml
 open Hardcaml.Cyclesim
 
 module Sim =
-  Cyclesim.With_interface (Kbee_cell.Iface_in) (Kbee_cell.Iface_out)
+  Cyclesim.With_interface (Kbee_top.Iface_in) (Kbee_top.Iface_out)
 
 let unsigned_of_bits b = Bits.to_int b
 
 let run_cell ~x ~y =
-  let sim = Sim.create Kbee_cell.create in
+  let sim = Sim.create Kbee_top.create in
   let inputs = inputs sim in
   let outputs = outputs sim in
   let w = Params.phase_bits in

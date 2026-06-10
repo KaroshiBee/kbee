@@ -1,7 +1,11 @@
 (* SPDX-License-Identifier: LGPL-3.0-or-later *)
 (* Copyright (c) 2026 Karoshibee LTD *)
 
-(** HardCaml — top-level kbee cell FSM (synthesizable). *)
+(** HardCaml — kbee cell FSM (synthesizable).
+
+    Expects {!Sawtooth.phase} and {!Sawtooth.wrap} from a shared master
+    timebase; instantiate one {!Sawtooth} per chip and fan out to every cell
+    ({!Kbee_top} for a single cell, {!Kbee_system} for several). *)
 
 open Hardcaml
 open Signal
@@ -12,6 +16,8 @@ module I_pre = struct
   type 'a t =
       { clock : 'a
       ; clear : 'a
+      ; phase : 'a
+      ; wrap : 'a
       ; start : 'a
       ; x : 'a
       ; y : 'a
@@ -21,6 +27,8 @@ module I_pre = struct
     let map t ~f =
       { clock = f t.clock
       ; clear = f t.clear
+      ; phase = f t.phase
+      ; wrap = f t.wrap
       ; start = f t.start
       ; x = f t.x
       ; y = f t.y
@@ -29,6 +37,8 @@ module I_pre = struct
     let iter t ~f =
       f t.clock;
       f t.clear;
+      f t.phase;
+      f t.wrap;
       f t.start;
       f t.x;
       f t.y
@@ -36,6 +46,8 @@ module I_pre = struct
     let iter2 a b ~f =
       f a.clock b.clock;
       f a.clear b.clear;
+      f a.phase b.phase;
+      f a.wrap b.wrap;
       f a.start b.start;
       f a.x b.x;
       f a.y b.y
@@ -43,16 +55,21 @@ module I_pre = struct
     let map2 a b ~f =
       { clock = f a.clock b.clock
       ; clear = f a.clear b.clear
+      ; phase = f a.phase b.phase
+      ; wrap = f a.wrap b.wrap
       ; start = f a.start b.start
       ; x = f a.x b.x
       ; y = f a.y b.y
       }
 
-    let to_list t = [ t.clock; t.clear; t.start; t.x; t.y ]
+    let to_list t =
+      [ t.clock; t.clear; t.phase; t.wrap; t.start; t.x; t.y ]
 
     let port_names_and_widths =
       { clock = ("clock", 1)
       ; clear = ("clear", 1)
+      ; phase = ("phase", phase_bits)
+      ; wrap = ("wrap", 1)
       ; start = ("start", 1)
       ; x = ("x", phase_bits)
       ; y = ("y", phase_bits)
@@ -131,15 +148,15 @@ let add_mod a b =
 let create (inputs : Signal.t I_pre.t) =
   let clock = inputs.clock in
   let clear = inputs.clear in
+  let phase = inputs.phase in
+  let wrap = inputs.wrap in
   let start = inputs.start in
   let x = inputs.x in
   let y = inputs.y in
   let spec = Reg_spec.create ~clock ~clear () in
-  let saw = Sawtooth.create { clock; clear } in
   let residue_enable = wire 1 in
   let _residue =
-    Pausable_sampler.create
-      { clock; clear; phase = saw.phase; enable = residue_enable }
+    Pausable_sampler.create { clock; clear; phase; enable = residue_enable }
   in
   let one_n_w = u one_n in
   let two_n_w = u two_n in
@@ -177,7 +194,7 @@ let create (inputs : Signal.t I_pre.t) =
   let st_pt2 = state_sig ==:. 7 in
   let st_done = state_sig ==:. 8 in
   let cd0 = countdown_sig ==: zero phase_bits in
-  let residue_unpaused = st_wait &: ~:(saw.wrap) in
+  let residue_unpaused = st_wait &: ~:wrap in
   assign residue_enable residue_unpaused;
   compile
     [ when_
@@ -191,7 +208,7 @@ let create (inputs : Signal.t I_pre.t) =
         ]
     ; when_
         st_wait
-        [ if_ saw.wrap [ state <--. 2; countdown <-- x ] [] ]
+        [ if_ wrap [ state <--. 2; countdown <-- x ] [] ]
     ; when_
         st_px
         [ if_ cd0

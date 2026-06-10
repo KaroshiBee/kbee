@@ -65,10 +65,24 @@ let test_hardcaml_vs_pause_sim _ctx =
     done
   done
 
+let test_shared_sawtooth_two_cells _ctx =
+  let (n0, x0, a0), (n1, x1, a1) =
+    Kbee_system_sim.run_two_cells ~x0:10 ~y0:20 ~x1:100 ~y1:200
+  in
+  let rn0, rx0, ra0 = Oracle_pause_sim.run_cell ~x:10 ~y:20 () in
+  let rn1, rx1, ra1 = Oracle_pause_sim.run_cell ~x:100 ~y:200 () in
+  assert_equal rn0 n0;
+  assert_equal rx0 x0;
+  assert_equal ra0 a0;
+  assert_equal rn1 n1;
+  assert_equal rx1 x1;
+  assert_equal ra1 a1
+
 let () =
   run_test_tt_main
     ("kbee_cell"
      >::: [ "pause_sim_csv" >:: test_pause_sim_csv
           ; "hardcaml_corners" >:: test_hardcaml_corners
           ; "hardcaml_vs_sim" >:: test_hardcaml_vs_pause_sim
+          ; "shared_sawtooth" >:: test_shared_sawtooth_two_cells
           ])
