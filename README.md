@@ -37,7 +37,12 @@ repository.
 ## Quick start
 
 ```bash
-nix develop
+nix develop                            # oracle, proofs, format/check
+nix develop .#fpaa                     # Anadigm AD2 + fpaa/ scripts
+nix develop .#asic                     # Ngspice, xschem, ASIC sim
+nix develop .#fpga                     # HardCaml digital kbee
+
+make help                              # checks/tests (see Makefile header)
 nix develop -c check-kbee              # format + license/copyright (pre-push gate)
 nix develop -c install-git-hooks       # pre-push hook (runs check-kbee)
 nix develop -c format-kbee             # format tracked py/sh/nix/md/toml/yaml
@@ -78,8 +83,8 @@ Property tests at W=4, W=16, and W=32 (`python/test/`).
 ### Reference CSVs
 
 ```bash
-nix develop -c gen-kbee-refs              # W=8 -> data/kbee-w8-refs.csv
-nix develop -c gen-kbee-base4-w4-refs    # W=4 base-4 -> data/kbee-base4-w4-refs.csv
+nix develop -c gen-kbee-refs                  # W=8 -> data/kbee-w8-refs.csv
+nix develop .#asic -c gen-kbee-base4-w4-refs  # W=4 base-4 -> data/kbee-base4-w4-refs.csv
 ```
 
 ## Lean
@@ -102,12 +107,12 @@ analog pipeline delays are out of scope.
 ### Opening an FPAA design
 
 ```bash
-nix develop -c open-ad2
-nix develop -c open-ad2 fpaa/designs/kbee-04.ad2
+nix develop .#fpaa
+open-ad2 fpaa/designs/kbee-04.ad2
 ```
 
 Requires AnadigmDesigner2 via Wine (`fpaa` on PATH, or set `$FPAA_BIN`).
-Inside `nix develop`, `open-ad2` is on PATH directly.
+Use the **`fpaa` dev shell** — `open-ad2` is not in the default shell.
 
 ### Target FPAA hardware
 
@@ -120,7 +125,7 @@ Inside `nix develop`, `open-ad2` is on PATH directly.
 ### ASIC iic-osic-tools container
 
 ```bash
-nix develop
+nix develop .#asic
 iic-osic-tools                 # interactive shell in the container
 iic-osic-tools yosys -V        # run a tool directly
 iic-osic-tools --ui-local --wait

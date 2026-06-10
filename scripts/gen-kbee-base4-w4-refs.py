@@ -10,7 +10,7 @@ nominal/scaled currents.
 Output: data/kbee-base4-w4-refs.csv (4096 * 16 = 65536 rows).
 
 Usage:
-    nix develop -c gen-kbee-base4-w4-refs
+    nix develop .#asic -c gen-kbee-base4-w4-refs
 """
 
 from __future__ import annotations

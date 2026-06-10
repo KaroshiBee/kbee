@@ -14,7 +14,7 @@ Regenerate:
 
 ```bash
 nix develop -c gen-kbee-refs
-nix develop -c gen-kbee-base4-w4-refs
+nix develop .#asic -c gen-kbee-base4-w4-refs
 ```
 
 ## Layout

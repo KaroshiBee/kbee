@@ -1,8 +1,17 @@
 # SPDX-License-Identifier: LGPL-3.0-or-later
 # Copyright (c) 2026 Karoshibee LTD
 #
-# Run from the repository root inside `nix develop` (default dev shell).
-# FPGA targets need `nix develop .#fpga` instead — tools are not in the default shell.
+# Leaf targets assume the matching nix dev shell (see sections below).
+# Orchestrators (test-all, ci, gen-all) invoke nix develop themselves — run
+# those from a plain shell at the repo root.
+#
+#   nix develop          — oracle, proofs, format/check (default)
+#   nix develop .#fpaa   — AD2 / fpaa scripts
+#   nix develop .#asic   — Ngspice, xschem, base-4 CSV/sim
+#   nix develop .#fpga   — HardCaml
+
+NIX ?= nix
+MAKEFLAGS += --no-print-directory
 
 SHELL := bash
 .SHELLFLAGS := -eu -o pipefail -c
@@ -11,7 +20,7 @@ SHELL := bash
 export PYTHONPATH := $(CURDIR)/python$(if $(PYTHONPATH),:$(PYTHONPATH),)
 export PYTHONUNBUFFERED := 1
 
-.PHONY: help all check ci test test-all format check-format check-license \
+.PHONY: help all check ci test test-all test-asic format check-format check-license \
 	install-hooks \
 	gen-all gen-refs gen-kbee-w8 gen-kbee-base4-w4 \
 	test-python build-proofs test-proofs \
@@ -24,20 +33,28 @@ export PYTHONUNBUFFERED := 1
 ##@ Aggregates
 
 help: ## List targets (default)
-	@awk 'BEGIN { FS = ":.*##"; printf "Usage: make [target]\n\nRun inside nix develop (fpga targets: nix develop .#fpga).\n" } \
+	@awk 'BEGIN { FS = ":.*##"; printf "Usage: make [target]\n\nOrchestrators (test-all, ci, gen-all): plain shell, no nix develop needed.\nLeaf targets: matching dev shell (see Makefile header).\n" } \
 		/^##@/ { printf "\n%s\n", substr($$0, 5) } \
 		/^[a-zA-Z0-9_.-]+:.*##/ { printf "  %-22s %s\n", $$1, $$2 }' $(MAKEFILE_LIST)
 
-all: check test ## Format/header checks + fast tests
+all: check test ## Format/header checks + fast tests (default shell)
 
-ci: check test-all run-asic-sim ## Pre-release gate (slow; includes Ngspice benches)
+ci: ## Full gate via nix develop (plain shell OK)
+	$(NIX) develop -c $(MAKE) check test
+	$(NIX) develop .#asic -c $(MAKE) test-asic
+	$(NIX) develop .#fpga -c $(MAKE) test-fpga
 
 check: ## Format + SPDX/copyright headers (pre-push gate)
 	check-kbee
 
-test: test-python build-proofs test-asic-csv ## Fast tests (no FPGA, no Ngspice sim decks)
+test: test-python build-proofs ## Oracle + Lean (default shell)
 
-test-all: test test-fpga ## All automated tests including HardCaml CSV suite
+test-asic: test-asic-csv test-asic-fabric run-asic-sim ## ASIC sim + CSV (.#asic)
+
+test-all: ## All tests via nix develop (plain shell OK)
+	$(NIX) develop -c $(MAKE) test
+	$(NIX) develop .#asic -c $(MAKE) test-asic
+	$(NIX) develop .#fpga -c $(MAKE) test-fpga
 
 ##@ Formatting & hooks
 
@@ -55,14 +72,16 @@ install-hooks: ## Set git core.hooksPath to .githooks
 
 ##@ Reference CSV generation
 
-gen-all: gen-refs ## Regenerate all golden CSV tables
+gen-all: ## Regenerate all golden CSV tables via nix develop (plain shell OK)
+	$(NIX) develop -c $(MAKE) gen-refs
+	$(NIX) develop .#asic -c $(MAKE) gen-kbee-base4-w4
 
-gen-refs: gen-kbee-w8 gen-kbee-base4-w4 ## W=8 + base-4 W=4 reference CSVs
+gen-refs: gen-kbee-w8 ## W=8 reference CSV (default shell)
 
 gen-kbee-w8: ## data/kbee-w8-refs.csv (65536 rows)
 	gen-kbee-refs
 
-gen-kbee-base4-w4: ## data/kbee-base4-w4-refs.csv (ASIC oracle)
+gen-kbee-base4-w4: ## data/kbee-base4-w4-refs.csv (ASIC oracle; .#asic)
 	gen-kbee-base4-w4-refs
 
 ##@ Python oracle
@@ -87,7 +106,7 @@ build-fpga: ## dune build in fpga/
 test-fpga: build-fpga ## dune runtest in fpga/ (~2 min; CSV oracle)
 	cd fpga && dune runtest
 
-##@ ASIC (Ngspice + base-4 oracle)
+##@ ASIC (Ngspice + base-4 oracle; nix develop .#asic)
 
 test-asic-csv: ## Oracle vs kbee-base4-w4-refs.csv (sampled)
 	check-asic-csv --only-equiv --max-rows 5000
@@ -98,7 +117,7 @@ run-asic-sim: ## Batch Ngspice benches under asic/ngspice/tb/
 test-asic-fabric: ## Ngspice fabric corners vs Python oracle
 	python3 asic/scripts/compare-ngspice-fabric.py
 
-##@ FPAA scripts (waveforms + HW capture checks)
+##@ FPAA scripts (waveforms + HW capture checks; nix develop .#fpaa)
 
 gen-fpaa-waveforms: ## Canonical 81-case zsum pulse/zero waveforms
 	python3 fpaa/scripts/gen-zsum-4trit-81-pulse-zero.py

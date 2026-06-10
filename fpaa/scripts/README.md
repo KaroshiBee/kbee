@@ -101,4 +101,4 @@ Standard sim duration for that example: `1.55 ms` (nominal `1.50 ms`).
 
 ## AD2 helpers
 
-- `open-ad2` — launch AnadigmDesigner2 (`nix develop -c open-ad2`; requires Wine `fpaa` on PATH)
+- `open-ad2` — launch AnadigmDesigner2 (`nix develop .#fpaa`; requires Wine `fpaa` on PATH)

@@ -7,4 +7,4 @@ Schematic capture mirrors `asic/ngspice/` hierarchy:
 - `cell/` — `kbee_cell` wrapper
 - `layout/` — preliminary sky130 sketch (`kbee_tile.sky`)
 
-Open with `nix develop -c xschem` from repo root. Netlists export to `asic/ngspice/` for Ngspice.
+Open with `nix develop .#asic` then `xschem` from repo root. Netlists export to `asic/ngspice/` for Ngspice.

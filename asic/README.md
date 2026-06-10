@@ -11,10 +11,11 @@ Pass-1 implementation.
 ## Quick start
 
 ```bash
-nix develop -c gen-kbee-base4-w4-refs   # golden CSV
-nix develop -c run-kbee-tests             # Python oracle tests
-nix develop -c check-asic-csv --only-equiv --max-rows 5000
-nix develop -c run-asic-sim               # Ngspice benches
+nix develop .#asic                        # ASIC dev shell
+nix develop .#asic -c gen-kbee-base4-w4-refs   # golden CSV
+nix develop -c run-kbee-tests             # Python oracle tests (default shell)
+nix develop .#asic -c check-asic-csv --only-equiv --max-rows 5000
+nix develop .#asic -c run-asic-sim        # Ngspice benches
 python asic/scripts/compare-ngspice-fabric.py
 ```
 

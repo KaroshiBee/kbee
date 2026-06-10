@@ -487,32 +487,66 @@
                 python
                 run-kbee-tests
                 gen-kbee-refs
-                gen-kbee-base4-w4-refs
-                run-asic-sim
-                check-asic-csv
                 check-license-headers
                 check-format-kbee
                 check-kbee
                 install-git-hooks
                 format-kbee
-                open-ad2
-                ngspice
-                xschem
                 ripgrep
                 fd
                 fzf
-                pandoc
-                librsvg
-                poppler-utils
-                chmlib
                 git
                 bashInteractive
                 coreutils
                 gawk
                 gnused
+                lean4
+              ];
+              shellHook =
+                pythonShellHook
+                + ''
+                  echo "kbee devShell: oracle, proofs, format/check (see README.md)"
+                  echo "  nix develop .#fpaa  — Anadigm AD2 / fpaa scripts"
+                  echo "  nix develop .#asic  — Ngspice, xschem, sky130 sim"
+                  echo "  nix develop .#fpga  — HardCaml digital kbee"
+                '';
+            };
+
+            fpaa = pkgs.mkShell {
+              packages = with pkgs; [
+                python
+                open-ad2
+                chmlib
+                pandoc
+                librsvg
+                poppler-utils
+                ripgrep
+                git
+                bashInteractive
+                coreutils
+              ];
+              shellHook =
+                pythonShellHook
+                + ''
+                  echo "fpaa devShell: AD2 launcher + fpaa/ scripts (see fpaa/docs/)"
+                  echo "  open-ad2 fpaa/designs/kbee-04.ad2"
+                '';
+            };
+
+            asic = pkgs.mkShell {
+              packages = with pkgs; [
+                python
+                gen-kbee-base4-w4-refs
+                run-asic-sim
+                check-asic-csv
+                ngspice
+                xschem
                 docker-client
                 iic-osic-tools
-                lean4
+                ripgrep
+                git
+                bashInteractive
+                coreutils
               ];
               shellHook =
                 pythonShellHook
@@ -520,6 +554,7 @@
                   export KBEE_ASIC_ROOT="$PWD/asic"
                   export NGSPICE="${pkgs.ngspice}/bin/ngspice"
                   export SKY130_PDK_HINT="iic-osic-tools or vendor open_pdks install"
+                  echo "asic devShell: Ngspice + xschem (see asic/README.md)"
                 '';
             };
 
