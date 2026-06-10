@@ -1,7 +1,7 @@
 (* SPDX-License-Identifier: LGPL-3.0-or-later *)
 (* Copyright (c) 2026 Karoshibee LTD *)
 
-(** W=8 kbee pause-encoding parameters. *)
+(** Shared W=8 constants (oracle and HardCaml). *)
 
 let w = 8
 let m = 6560 (* 3^8 - 1 *)

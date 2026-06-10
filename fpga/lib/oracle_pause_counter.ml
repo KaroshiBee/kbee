@@ -1,7 +1,7 @@
 (* SPDX-License-Identifier: LGPL-3.0-or-later *)
 (* Copyright (c) 2026 Karoshibee LTD *)
 
-(** Pause-for-n countdown helper used by the top-level cell FSM. *)
+(** ORACLE — pause-for-n countdown helper (plain OCaml scaffold; unused by RTL). *)
 
 type t =
   { mutable remaining : int

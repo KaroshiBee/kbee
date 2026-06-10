@@ -3,7 +3,8 @@
 
 open Params
 
-(** Pure-OCaml lag arithmetic (reference for tests and oracle stepping). *)
+(** ORACLE — direct integer kbee math (mirrors [python/kbee.py]).
+    Not synthesizable; used to check pause-encoded reference models. *)
 
 let lag_mod (saw : int) (ptr : int) : int =
   let d = saw - ptr in

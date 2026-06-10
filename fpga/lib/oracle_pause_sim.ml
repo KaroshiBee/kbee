@@ -2,9 +2,10 @@
 (* Copyright (c) 2026 Karoshibee LTD *)
 
 open Params
-open Lag
+open Oracle_lag
 
-(** Cycle-accurate pause machine (reference model matching HardCaml semantics). *)
+(** ORACLE — cycle-accurate pause machine (plain OCaml reference model).
+    Checked against {!Oracle_lag} and [data/kbee-w8-refs.csv]; not HardCaml. *)
 
 type sampler =
   { mutable ptr : int

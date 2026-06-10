@@ -1,6 +1,8 @@
 (* SPDX-License-Identifier: LGPL-3.0-or-later *)
 (* Copyright (c) 2026 Karoshibee LTD *)
 
+(** HardCaml — top-level kbee cell FSM (synthesizable). *)
+
 open Hardcaml
 open Signal
 open Always

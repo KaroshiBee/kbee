@@ -23,7 +23,7 @@ let test_pause_sim_csv _ctx =
         while true do
           let line = Stdlib.input_line ic in
           let x, y, nor, xor, and_ = parse_row line in
-          let sn, sx, sa = Pause_sim.run_cell ~x ~y () in
+          let sn, sx, sa = Oracle_pause_sim.run_cell ~x ~y () in
           assert_equal ~printer:Int.to_string nor sn
             ~msg:(Printf.sprintf "row %d nor" !row);
           assert_equal ~printer:Int.to_string xor sx
@@ -49,7 +49,7 @@ let test_hardcaml_corners _ctx =
     ]
   in
   List.iter cases ~f:(fun (x, y, nor, xor, and_) ->
-    let sn, sx, sa = Sim_util.run_cell ~x ~y in
+    let sn, sx, sa = Kbee_cell_sim.run_cell ~x ~y in
     assert_equal nor sn;
     assert_equal xor sx;
     assert_equal and_ sa)
@@ -57,8 +57,8 @@ let test_hardcaml_corners _ctx =
 let test_hardcaml_vs_pause_sim _ctx =
   for x = 0 to 64 do
     for y = 0 to 64 do
-      let ref_n, ref_x, ref_a = Pause_sim.run_cell ~x ~y () in
-      let hw_n, hw_x, hw_a = Sim_util.run_cell ~x ~y in
+      let ref_n, ref_x, ref_a = Oracle_pause_sim.run_cell ~x ~y () in
+      let hw_n, hw_x, hw_a = Kbee_cell_sim.run_cell ~x ~y in
       assert_equal ref_n hw_n;
       assert_equal ref_x hw_x;
       assert_equal ref_a hw_a

@@ -7,7 +7,7 @@ open OUnit2
 let test_sum_exhaustive _ctx =
   for x = 0 to Params.cutoff do
     for y = 0 to Params.cutoff do
-      assert_equal (x + y) (Pause_primitives.pause_add_ref x y)
+      assert_equal (x + y) (Oracle_pause_primitives.pause_add_ref x y)
     done
   done
 

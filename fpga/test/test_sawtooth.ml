@@ -4,14 +4,14 @@
 open OUnit2
 
 let test_wrap_period _ctx =
-  let t = Pause_sim.create () in
-  Pause_sim.wait_wrap t;
+  let t = Oracle_pause_sim.create () in
+  Oracle_pause_sim.wait_wrap t;
   for i = 1 to Params.m do
-    Pause_sim.step t;
-    assert_equal i (Pause_sim.saw_phase t)
+    Oracle_pause_sim.step t;
+    assert_equal i (Oracle_pause_sim.saw_phase t)
   done;
-  Pause_sim.step t;
-  assert_equal 0 (Pause_sim.saw_phase t)
+  Oracle_pause_sim.step t;
+  assert_equal 0 (Oracle_pause_sim.saw_phase t)
 
 let () =
   run_test_tt_main ("sawtooth" >::: [ "wrap_period" >:: test_wrap_period ])

@@ -61,12 +61,32 @@ Tests:
 
 ## Module map
 
-| Module | Role |
-|--------|------|
-| `Sawtooth` | Master phase counter + wrap strobe |
-| `Pausable_sampler` | `lag = phase − ptr (mod P)` |
-| `Pause_sim` | Cycle-accurate reference model |
-| `Kbee_cell` | Top FSM: sum → 8-tick residue + accumulators |
+Ground-truth oracle outside this tree: [`python/kbee.py`](../python/kbee.py) →
+[`data/kbee-w8-refs.csv`](../data/kbee-w8-refs.csv).
+
+### Oracle (plain OCaml — not synthesizable)
+
+| Module | File | Role |
+|--------|------|------|
+| `Oracle_lag` | `lib/oracle_lag.ml` | Integer kbee math (direct oracle) |
+| `Oracle_pause_sim` | `lib/oracle_pause_sim.ml` | Pause-encoded reference model |
+| `Oracle_pause_primitives` | `lib/oracle_pause_primitives.ml` | Test helpers over oracle sim |
+| `Oracle_pause_counter` | `lib/oracle_pause_counter.ml` | Unused OCaml countdown scaffold |
+
+### HardCaml (synthesizable)
+
+| Module | File | Role |
+|--------|------|------|
+| `Sawtooth` | `lib/sawtooth.ml` | Master phase counter + wrap strobe |
+| `Pausable_sampler` | `lib/pausable_sampler.ml` | `lag = phase − ptr (mod P)` |
+| `Kbee_cell` | `lib/kbee_cell.ml` | Top FSM: sum → 8-tick residue + accumulators |
+| `Kbee_cell_sim` | `lib/kbee_cell_sim.ml` | Cycle-sim harness (tests only) |
+
+### Shared
+
+| Module | File | Role |
+|--------|------|------|
+| `Params` | `lib/params.ml` | W=8 constants (`P`, `inc_schedule`, …) |
 
 ## Cycle budget (informative)
 
