@@ -28,6 +28,12 @@ accumulator → `pause_triple()`.
 The FPAA path needs explicit `SumDiff` subtracts on a bounded voltage rail; the
 cyclic digital sawtooth does not.
 
+This tree **keeps the time-paused model** as the prototype substrate. Direct
+modular arithmetic (collapsed schedules, current-domain rails) lives under
+[`asic/`](../asic/) and [`fpaa/`](../fpaa/). See
+[`docs/time-model.md`](docs/time-model.md) for pause alternatives (e.g.
+deadline-compare vs countdown) without abandoning the time model here.
+
 ## Specification
 
 - Algorithm: [`docs/base-n-nminus1-algorithm.md`](../docs/base-n-nminus1-algorithm.md)
@@ -102,10 +108,13 @@ Literal pause encoding is slow but faithful:
 - Per residue tick: up to `3z` pause ticks on the triple step
 - Accumulators: `Σ inc_k = 3280` pause ticks across winning branches
 
-Expect **O(10⁵–10⁶) cycles/op** in simulation. Throughput optimisations can
-collapse pause sequences later without changing semantics.
+Expect **O(10⁵–10⁶) cycles/op** in simulation. That cost is accepted for this
+prototype; faster direct implementations belong in other trees (see
+[`docs/time-model.md`](docs/time-model.md)).
 
 ## Next steps
 
+- Deadline-compare pauses (same semantics, less countdown toggling) — see
+  [`docs/time-model.md`](docs/time-model.md)
 - Controller/timing formal model (TLA+ or [Veil](https://github.com/verse-lab/veil/))
 - Target FPGA board integration when moving beyond sim-first milestone
