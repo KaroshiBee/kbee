@@ -1,0 +1,29 @@
+---
+description: How to read and edit the user's NixOS config repo
+alwaysApply: true
+---
+
+# NixOS config repo
+
+The canonical repo lives on `nixos-01:/home/wyn/nixos` (git remote
+`git@github.com:wyn/nixos.git`). Two ways to access it:
+
+- **Read-only, no ssh:** `/mnt/nas/wyn/nixos` — the repo is exposed on the
+  NAS. Prefer this for *reading* (browsing files, `rg`, `grep`, answering
+  questions). No ssh needed and no network hops.
+- **Read/write via ssh:** `ssh nixos-01` then `/home/wyn/nixos`. Use this
+  when you need to *edit*, `git` (commit/push), or run `nixos-rebuild` /
+  `home-manager` commands.
+
+## Guidance
+
+- Default to reading from `/mnt/nas/wyn/nixos`.
+- For edits: copy the file to a tmp location, modify locally, then `scp`
+  back to `nixos-01:/home/wyn/nixos/...`. Do **not** try to write to
+  `/mnt/nas/wyn/nixos` (treat it as read-only even if mounted rw).
+- Never edit files under `/nix/store/...` — those are symlink targets
+  managed by home-manager / NixOS; edit the source in the repo instead.
+- This machine (`nixos-02`) also has home-manager applied, so global git
+  config, shell setup, etc. come from `home/common.nix`. To change them,
+  edit that file, commit & push on `nixos-01`, pull & rebuild on the
+  target host.

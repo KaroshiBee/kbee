@@ -1,0 +1,13 @@
+---
+description: Keep README.md H1 title as KBee (capital K and B)
+globs: README.md
+alwaysApply: false
+---
+
+# README title
+
+The top-level [`README.md`](../README.md) H1 must stay **`# KBee`**, not `# kbee`.
+
+The repo directory is `kbee` (lowercase); the product/project name in prose is
+**KBee**. Do not “normalize” the title to lowercase when editing README or
+running formatters.

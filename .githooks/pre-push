@@ -7,11 +7,57 @@ set -euo pipefail
 ROOT="$(git rev-parse --show-toplevel)"
 cd "$ROOT"
 
+remote_name="${1:-}"
+remote_url="${2:-}"
+
 # Git hooks get a minimal environment (Emacs/Magit often omit login PATH).
 export PATH="$HOME/.nix-profile/bin:/nix/var/nix/profiles/default/bin:$PATH"
 
 if [ "$(git config --get core.hooksPath || true)" != .githooks ]; then
   echo "pre-push: warning: core.hooksPath is not .githooks — run: nix develop -c install-git-hooks" >&2
+fi
+
+private_path_re='^private/'
+private_cursor_re='^\.cursor/rules/work-branch\.mdc$'
+
+block_public_push() {
+  local reason=$1
+  echo "pre-push: BLOCKED — $reason" >&2
+  echo "pre-push: private material pushes to NAS only: git push private work" >&2
+  exit 1
+}
+
+is_work_branch() {
+  case "$1" in
+    work | work/*) return 0 ;;
+    *) return 1 ;;
+  esac
+}
+
+if [ "$remote_name" = "public" ]; then
+  branch=$(git symbolic-ref --short HEAD 2>/dev/null || true)
+  if is_work_branch "$branch"; then
+    block_public_push "branch '$branch' must not be pushed to the public remote ($remote_url)"
+  fi
+
+  while read -r local_ref local_sha remote_ref remote_sha; do
+    [ "$local_sha" = "0000000" ] && continue
+    ref_branch="${local_ref#refs/heads/}"
+    if is_work_branch "$ref_branch"; then
+      block_public_push "ref '$ref_branch' must not be pushed to the public remote ($remote_url)"
+    fi
+    if [ "$remote_sha" = "0000000" ]; then
+      range="$local_sha"
+    else
+      range="${remote_sha}..${local_sha}"
+    fi
+    if git diff --name-only "$range" | grep -qE "$private_path_re"; then
+      block_public_push "commits include private paths (private/)"
+    fi
+    if git diff --name-only "$range" | grep -qE "$private_cursor_re"; then
+      block_public_push "commits include private Cursor rule work-branch.mdc"
+    fi
+  done
 fi
 
 if ! command -v nix >/dev/null 2>&1; then

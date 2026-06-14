@@ -1,0 +1,45 @@
+---
+description: Prefer the local Anadigm CAM knowledge base over guessing or web search
+alwaysApply: true
+---
+
+# Anadigm / AnadigmDesigner2 lookups
+
+Before answering any question about Anadigm chips (AN231E04, AN221E04,
+AN220/AN120 families, etc.), AnadigmDesigner2 CAMs, I/O cells, clocks,
+or auxiliary functions, **consult the local knowledge base first**.
+
+## Where the info lives
+
+- `docs/AN231E04.md` and `docs/phase-*.md` — project-specific notes.
+- `~/dev/kbee-kb/cam-docs/` (outside the repo) — the full AD2 CAM
+  documentation, converted from the `.chm` files under
+  `~/.wine/.../AnadigmDesigner2/Program/ADDATA/`. Structure:
+  - `README.md` — grouped index by family (`ANx3`, `ANx20`, `ANx21`,
+    `ANx22`, `ANx27`, `AN12x`, `AN22x`).
+  - `all.md` — single-file concatenation of every CAM doc (~180 KB);
+    good for a broad Grep or a one-shot read when unsure which CAM is
+    relevant.
+  - `<CAM>/index.md` — per-CAM Markdown.
+  - `<CAM>/index.html` + `<CAM>/assets/*.gif` — HTML with inline
+    figures referenced by the Markdown.
+  - `<CAM>/meta.json` — title + sha256 of the source `.chm`.
+
+## How to search
+
+1. For a question about a specific CAM type, `Grep` across
+   `~/dev/kbee-kb/cam-docs/` for the keyword, or `Read` the matching
+   `<CAM>/index.md` directly.
+2. For "which CAM does X?" questions where you don't know the CAM
+   name, `Grep` `all.md` first, then follow up on the specific
+   `<CAM>/index.md` for full context.
+3. Use `~/dev/kbee-kb/cam-docs/README.md` as the family-grouped index.
+
+Do not fall back to web search or general training knowledge for
+Anadigm CAM specifics while the local KB has the answer — it's
+authoritative (extracted from the shipped AD2 help) and version-pinned.
+
+## If files look stale or missing
+
+Regenerate with `./scripts/convert-cam-docs.sh` from the repo root.
+Output path can be overridden with `$KBEE_KB_DIR`.

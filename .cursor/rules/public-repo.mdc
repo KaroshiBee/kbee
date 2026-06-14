@@ -1,0 +1,10 @@
+---
+description: public main branch and Codeberg remote
+alwaysApply: true
+---
+
+# Public kbee (main)
+
+- Edit and push **`main`** to the **`public`** remote (Codeberg) only.
+- Do not commit `private/` or private Cursor rules on `main`.
+- Maintainer superset lives on branch **`work`** (NAS remote) — never merge `work` into `main`.

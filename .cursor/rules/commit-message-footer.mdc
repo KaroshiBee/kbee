@@ -1,0 +1,37 @@
+---
+description: Required git commit message footer for this repo
+alwaysApply: true
+---
+
+# Commit message footer
+
+When creating git commits in this repository, append this footer after the
+commit body (blank line separating body from footer):
+
+```
+Co-authored-by: Cursor <cursoragent@cursor.com>
+
+Signed-off-by: wyn <simon.parry@karoshibee.com>
+```
+
+Example full message:
+
+```
+[fpga] short subject line
+
+One or two sentences explaining why.
+
+Co-authored-by: Cursor <cursoragent@cursor.com>
+
+Signed-off-by: wyn <simon.parry@karoshibee.com>
+```
+
+Pass multi-line messages via a HEREDOC (do **not** rely on `git commit -s`
+alone — it only adds `Signed-off-by`). Trailer order is fixed:
+
+1. blank line after body
+2. `Co-authored-by: Cursor <cursoragent@cursor.com>`
+3. blank line
+4. `Signed-off-by: wyn <simon.parry@karoshibee.com>`
+
+Apply to every new commit unless the user explicitly requests a different format.

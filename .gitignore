@@ -37,5 +37,8 @@ __pycache__/
 .vscode/
 .idea/
 *.code-workspace
-.cursor/
+# Cursor rules (public on main; work branch adds private rules)
 /.cursor
+!.cursor/
+!.cursor/rules/
+!.cursor/rules/**

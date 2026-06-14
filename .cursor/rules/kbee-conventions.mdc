@@ -1,0 +1,259 @@
+---
+description: kbee project conventions (line endings, encoding bounds, test picks, plan authority)
+alwaysApply: true
+---
+
+# kbee conventions
+
+## Repo-wide search
+
+Do **not** grep, ripgrep, or scan `proofs/.lake/` — it is a gitignored Lake
+cache (Mathlib and other packages) and is huge. Limit Lean searches to tracked
+sources under `proofs/Kbee/` and `proofs/*.lean`, or pass
+`--glob '!proofs/.lake/**'`.
+
+## Line endings
+
+All tracked text files in this repo are **LF-only**. This includes `.md`,
+`.py`, `.sh`, `.csv`, `.ad2`-adjacent configs, and `.mdc`. Do not
+introduce `\r\n`. When authoring CSV from Python, pass
+`lineterminator="\n"` to `csv.writer`, since the module's default is
+`\r\n`:
+
+```python
+with open(path, "w", newline="") as f:
+    w = csv.writer(f, lineterminator="\n")  # not csv.writer(f)
+```
+
+## Ternary encoding bounds (plan §1, canonical statement)
+
+Always state bounds in base-3-code form first; voltage is a derived view.
+
+- Inputs: `x, y ∈ [00000000_3, 11111111_3] = [0, 3280]` (digits `{0,1}`).
+  In voltage: `0 .. 3280/6561 · V_range ≈ 0 .. 0.4999 V`.
+- Sum: `z = x + y ∈ [00000000_3, 22222222_3] = [0, 6560]` (digits `{0,1,2}`;
+  no inter-digit carry). In voltage: `0 .. V_range`.
+- Accumulator outputs: `A_NOR, A_XOR, A_AND ∈ [00000000_3, 11111111_3]`
+  with the invariant `A_NOR + A_XOR + A_AND = 3280 = (3^8 − 1)/2`.
+
+Do not conflate the `[0, 3280]` input range with the `[0, 6560]` sum
+range. When a doc or test picks hand-rolled `(x_bin, y_bin)` pairs, the
+leading base-3 digit `d_0 = digit_0(z)` is determined by
+`z < 2187` / `z < 4374` thresholds and usually does **not** match the
+MSB of `x_bin | y_bin` directly — always compute `z_code = x_code +
+y_code` first.
+
+## Test picks come from the reference CSV
+
+All test-row worksheets for kbee-0N designs come from
+`data/kbee-w8-refs.csv` via the helper scripts
+(`scripts/kbee-01-picks.py`, etc.), not from hand-rolled
+`(x_bin, y_bin)` tables in the doc prose. Hand-rolled picks have a
+track record of miscategorising `digit_0`. If a doc needs inline
+examples, use only true-corner rows (`(0,0)`, `(255,255)`) or cite the
+picks script output verbatim.
+
+## Ground-truth reference
+
+The executable algorithm oracle lives in-repo at `python/kbee.py`. Generate test
+vectors with `scripts/gen-kbee-refs.py` and emit into `data/kbee-w8-refs.csv`.
+Property tests at W=4/16/32 are in `python/test/test_kbee.py`.
+
+## AD2 design files
+
+`.ad2` files are proprietary AnadigmDesigner2 binaries. Never attempt
+to read, write, or diff them as text. Design deliverables are the
+Markdown build guides in `docs/`, not the `.ad2` files.
+
+## Plan file
+
+`~/.cursor/plans/ternary_bool_black_box_0c12b9fe.plan.md` is the
+authoritative spec. Check consistency against it before proposing
+architectural changes; edit it when the authoritative decisions
+change, and keep the derived docs in `docs/` aligned.
+
+## CAM library reference
+
+Before citing any CAM behaviour, consult the local KB at
+`~/dev/kbee-kb/cam-docs/apex/` (AN231E04-compatible CAMs). See the
+related `anadigm-cam-kb` rule for the search protocol.
+
+## AD2 patterns (locked in by kbee-00 sim, 2026-04-22)
+
+These are the AD2-side conventions every kbee-0N design follows. They
+are non-negotiable defaults; deviate only with an explicit reason
+captured in the per-stage doc.
+
+### 1. Hold-before-Bypass on every analog output pin
+
+Half-cycle SC CAMs (`SumDiff`, `GainSwitch`, `Gain`, `Integrator`, etc.)
+output a valid value on only one clock phase and reset toward signal
+ground on the other. An `IOCell` configured as **Output Bypass** is a
+continuous-time pin driver — feeding it a half-cycle output exports a
+square wave whose DC average pins near 1.5 V regardless of the inputs
+(the symptom that bit kbee-00 on first sim).
+
+Rule: between the last SC stage of any analog signal and its Output
+Bypass I/O cell, insert one Apex `Hold` CAM, with **Input Sampling
+Phase set to match the upstream CAM's Output Phase**. The Hold's output
+is continuous and drives the IOCell cleanly.
+
+Exemptions: outputs already terminated in a Hold-class CAM
+(`Hold`, `HoldVoltageControlled`, `GainHold`, …) are safe to wire
+directly to the pin.
+
+CAB-budget consequence: each analog output pin costs **one extra CAB**
+unless an existing Hold can be reused.
+
+### 2. Differential siggens for inputs
+
+AN231E04 I/O cells are physically differential; AD2's simulator refuses
+to run with `"In_neg not connected"` if a Single-ended siggen is wired
+to an input pad. Default siggen recipe per input pin:
+
+- Output: **Differential**
+- Peak Amplitude: **0** (DC test rows; non-zero only for AC sims)
+- **Differential Offset:** the logical operand voltage (e.g. `x_V` or
+  `y_V` from the reference CSV) in volts
+- **Common Mode Offset: 1.500 V** (signal ground on AN231E04)
+
+This drives `In_pos = 1.5 V + Diff/2` and `In_neg = 1.5 V − Diff/2`,
+which the input cell decodes as the logical operand.
+
+### 3. Scope channel convention
+
+Probe at chip pins (not internal nets — AD2 does not expose internal
+ratiometric voltages on the scope dialog). Standard four-channel
+assignment for a one-output stage:
+
+| Channel | Probe                | Reads                                             |
+|---------|----------------------|---------------------------------------------------|
+| Ch 1    | `x` input pin (pos)  | `Differential Offset` of x's siggen = `x_V` directly |
+| Ch 2    | `y` input pin (pos)  | Same for y = `y_V`                                |
+| Ch 3    | output pin (pos)     | single-ended absolute = `1.5 V + V_logical / 2`   |
+| Ch 4    | output pin (neg)     | single-ended absolute = `1.5 V − V_logical / 2`   |
+
+Decoded logical output: **`V_logical = Ch 3 − Ch 4`**.
+
+Why the asymmetry: input probes sit "behind" the differential siggen,
+which exposes the logical scalar; output probes sit on the physical
+chip pins, which carry the common-mode-shifted differential pair.
+
+### 4. Clock naming
+
+Point SC CAMs at AD2's pre-defined slots (`Clock 2`, `Clock 3`, `Clock
+4`, …) rather than renaming `ACLK` or `Sys1`/`Sys2` in Chip Settings.
+The default chip layout (ACLK = 16 MHz → Sys1 = 16 MHz → Clock 3 =
+sys1/64 = 250 kHz) already supplies what kbee needs:
+
+- **Clock 3 = 250 kHz** — the kbee residue / z-loop tick clock for
+  kbee-00, -01, -02-bringup, -03.
+- **Clock 2 = 750 kHz** (kbee-04 only) — the accumulator sub-tick
+  clock, three sub-ticks per residue tick.
+
+Spell these out as "Clock 3 (250 kHz default)" or "Clock 2 (750 kHz)"
+in build guides; do not write "ClockA = 250 kHz" — `ClockA` is the
+per-CAM dropdown that *selects* one of the global Clock N slots, not a
+global clock itself.
+
+### 5. Save early, save often
+
+`.ad2` files are binary and AD2 has been observed to drop unsaved
+topology changes on crash. After every CAM placement or wire change,
+`Ctrl+S`.
+
+### 6. Analog MUX idiom (locked in by kbee-03, 2026-04-23)
+
+To multiplex two analog signals under a digital-ish control, the
+validated recipe is:
+
+- **`GainSwitch` CAM** with both gains set to **1.0** and "Select Input
+  1 When Control High" (or the opposite polarity if the control
+  stimulus is inverted). Input 1 = branch A, Input 2 = branch B,
+  Control = the mux select.
+- Drive the Control input from a **differential analog siggen**
+  (`CM = 1.5 V`, Diff Offset ≈ 1 V for HIGH, 0 V for LOW) rather than a
+  DIO pin — AD2 accepts this uniformly across the 4 LF input slots.
+- If either branch comes from a half-cycle SC CAM (e.g. a `SumDiff`
+  output), insert a **plain `Hold` CAM** between that CAM and the
+  `GainSwitch` input, configured with **Input Sampling Phase matched
+  to the upstream CAM's Output Phase**. Without it, the `GainSwitch`
+  will sample the upstream CAM during its signal-ground half-cycle
+  and the mux output collapses to ~0 V. We call this the "bridge
+  hold".
+
+`HoldVoltageControlled` is **not** a drop-in analog mux: tying its
+Control HIGH makes it transparent, not buffering, and its single
+analog input can't carry two mutually-exclusive branches. Use the
+`GainSwitch` idiom above by default.
+
+### 7. Loop latency budget (locked in by kbee-03, 2026-04-23)
+
+Any SC feedback loop that uses Holds for phase-bridging adds **one
+Clock 3 period per Hold** of startup latency. The kbee-03 residue
+loop has two Holds in series (`bridge_hold` + `z_hold`), giving an
+**8 µs seed-to-first-residue** latency at 250 kHz before the classifier
+outputs track. Steady-state per-tick cadence is still one Clock 3
+period per residue step; only the initial priming takes two ticks.
+
+When a downstream stage (kbee-04, etc.) needs to align a strobe with
+the residue cascade, the MCU (or on-chip controller) must wait at
+least **N × 4 µs** after `Load` falls, where `N` is the number of
+Holds in series in that loop.
+
+### 8. GainSwitch analog-output 1-tick delay (locked in by kbee-03, 2026-04-23)
+
+A GainSwitch CAM's analog output lags its Control input by one full
+Clock cycle, because:
+
+- The comparator samples `Control` on Phase 1.
+- The `Select` bit updates on Phase 2 (after the comparator decision).
+- The gain stage's switched input only takes the new `Select` at the
+  *next* Phase 1.
+
+So downstream consumers of `GainSwitch.Out` see a value corresponding
+to `Control[previous clock]`, not `Control[current clock]`.
+
+Concrete implication: a feedback loop that computes
+`f(z) = a·z − classifier(z)·V`, where `classifier` is a GainSwitch,
+actually realises `f_real(z[n]) = a·z[n] − classifier(z[n−1])·V`.
+The asymmetric one-clock delay in the correction term can de-stabilise
+otherwise-fine fixed points. For kbee-03 this turned the middle-branch
+fixed point `z* = 0.5 V` into a period-2 orbit with growth factor 3.
+
+When precision matters (kbee-04, kbee-05), the fix is to insert a
+`Hold` in the `z` branch before the SumDiff so *both* the `3·z` term
+and the classifier-output term reflect `z[n−1]`, restoring the
+symmetric-delay algorithm `f(z[n−1]) = 3·z[n−1] − classifier(z[n−1])`.
+See also convention §9 below for the sampling-phase rule that makes
+this fix actually work.
+
+### 9. Two-Holds-in-series phase rule (locked in by kbee-03, 2026-04-24)
+
+When chaining two `Hold` CAMs back-to-back for pipeline-matching
+(e.g. delaying one signal branch by an extra clock to match another
+branch's inherent delay), their **Input Sampling Phases must be
+opposite**, not identical.
+
+Why: a Hold sampling on Φ1 transitions its output at Φ2 of the same
+clock. If a downstream Hold also samples on Φ1, it grabs the upstream
+value during the upstream's sample instant, not during the upstream's
+valid-hold interval — effectively passing the value through with only
+half a clock of delay. Same-phase two-Hold chain ≈ one Hold.
+
+Correct pattern for a full one-clock delay:
+- Upstream Hold: **Sampling Phase = Φ1** (or whatever matches its
+  own upstream's valid phase — see rule §1).
+- Downstream Hold: **Sampling Phase = Φ2** (opposite of upstream).
+
+For kbee-03 specifically: `z_hold` samples Φ1 (grabs `gs_load.Out`
+during its Φ1-valid half-cycle), `z_delay` samples Φ2 (grabs
+`z_hold.Out` during `z_hold`'s held-through-Φ2 half-cycle). This chain
+gives a full Clock 3 period of delay on the `z_hold.Out →
+residue.Input 1` path, which is what the classifier-delay
+symmetrisation from rule §8 requires.
+
+First attempt (both Holds on Φ1) failed identically to the
+un-symmetrised design — `d2-mid` still railed at tick 3. Switching
+`z_delay` to Φ2 made `d2-mid` pass cleanly at `z_hold ≈ 0.5 V` steady
+state, confirming the chain now delays as intended.
